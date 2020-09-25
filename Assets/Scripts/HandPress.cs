@@ -31,6 +31,8 @@ public class HandPress : MonoBehaviour
 
     public void ReliseButton()
     {
+        
         lastButtonPressed.GetComponent<ButtonBehavior>().OnButtonExit();
+        lastButtonPressed = null;
     }
 }
