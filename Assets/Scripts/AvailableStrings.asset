@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e85f1cd83482c4f47ae8310d96086e1a, type: 3}
-  m_Name: StringsToType
+  m_Script: {fileID: 11500000, guid: e42ee2cd1d7c1264ebb19e30d8b07c24, type: 3}
+  m_Name: AvailableStrings
   m_EditorClassIdentifier: 
-  prefabName: 
   StringsToType:
   - This is a test
   - This is also a test
-  - Writing tests are hard
-  - Why did i choose five elements
-  - This is the last one
+  - Comeing up with things to write is hard
+  - Why did i choose 5 elements
+  - Thank god this is the last

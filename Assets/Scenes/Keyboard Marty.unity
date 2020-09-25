@@ -155,12 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73aafa829ffcf3440b6b8c7bb8b740fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Letter: 81
-  LetterText: {fileID: 1758478613}
-  HowerOwer: {fileID: 2100000, guid: d272f79be27a58240ba652d97dacc64d, type: 2}
-  DefaultMaterial: {fileID: 2100000, guid: 1bafc67a39c99964ca4a7c6297f7cc82, type: 2}
-  PressMaterial: {fileID: 2100000, guid: 66d86b768ba5d4947a7bb7d8ebeb2c57, type: 2}
-  AmountToMove: {x: 0, y: -0.2, z: 0}
 --- !u!65 &197490544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -802,10 +796,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 842882368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec746582b4dc2a44e9311aa25d2c922c, type: 3}
+  m_Script: {fileID: 11500000, guid: 21e3832f7cd28a24282c7a32ba4310c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StringArray: {fileID: 0}
+  StringArray: {fileID: 11400000, guid: fa22c681328a38447a0d4829e30898f8, type: 2}
+  StringMatch:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &930811129
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,22 +992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b864222d9f154844dbb928f267eadc5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Time: 1
-  Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1699694044}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &1194317105
 Transform:
   m_ObjectHideFlags: 0
