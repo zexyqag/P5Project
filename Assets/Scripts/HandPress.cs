@@ -5,17 +5,16 @@ using UnityEngine;
 public class HandPress : MonoBehaviour
 {
 
-    public Vector3 rayDirection;
 
     RaycastHit hit;
     private GameObject lastButtonPressed;
 
     private void Update()
     {
+        Vector3 rayDirection = (transform.forward + transform.forward + transform.up).normalized;
+        Debug.DrawRay(this.transform.position, rayDirection * 10, Color.yellow);
 
-        Debug.DrawRay(this.transform.position, rayDirection * 1, Color.yellow);
-
-        Physics.Raycast(this.transform.position, rayDirection, out hit, 1);
+        Physics.Raycast(this.transform.position, rayDirection, out hit, 10);
         
     }
 
