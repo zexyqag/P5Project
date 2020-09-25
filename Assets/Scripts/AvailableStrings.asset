@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AvailableStrings
   m_EditorClassIdentifier: 
   StringsToType:
-  - This is a test
-  - This is also a test
-  - Comeing up with things to write is hard
-  - Why did i choose 5 elements
-  - Thank god this is the last
+  - THIS IS A TEST
+  - THIS IS ALSO A TEST
+  - COMING UP WITH THINGS TO WRITE IS HARD
+  - WHY DID I CHOOSE 5 ELEMENTS
+  - THANK GOD THIS IS THE LAST

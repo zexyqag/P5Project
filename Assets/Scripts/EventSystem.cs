@@ -6,4 +6,6 @@ using System;
 public static class EventSystem
 {
     public static Action<char> onButtonPressed;
+    public static Action<string> validateScentence;
+    public static Action clearKeyboard;
 }

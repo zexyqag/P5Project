@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(Text))]
 public class StringsToType : MonoBehaviour {
 	public StringArrayScriptableObject StringArray;
-	private List<String> strings = new List<string>();
+	private List<string> strings = new List<string>();
 	private Text textField;
 
 	public UnityEvent OnStringMatch;
@@ -21,6 +21,7 @@ public class StringsToType : MonoBehaviour {
 
 	private void Start() {
 		Initialize();
+		EventSystem.validateScentence += CheckStringForMatch;
 	}
 
 	private void Initialize() {
@@ -29,9 +30,10 @@ public class StringsToType : MonoBehaviour {
 		nextText();
 	}
 
-	public void CheckStringForMatch(String input) {
+	public void CheckStringForMatch(string input) {
 		if(input.Equals(textField.text)) {
 			OnStringMatch.Invoke();
+			EventSystem.clearKeyboard();
 			nextText();
 		}
 	}
@@ -39,7 +41,7 @@ public class StringsToType : MonoBehaviour {
 	[ContextMenu("nextText")]
 	private void nextText() {
 		if(strings.Count != 0) {
-			textField.text = strings.First<String>();
+			textField.text = strings.First<string>();
 			strings.RemoveAt(0);
 		} else {
 			Initialize();
