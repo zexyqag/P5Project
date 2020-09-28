@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.UIElements;
 
 public class KeyBoard : MonoBehaviour {
 	private Text textFlied;
 	private void Start() {
 		EventSystem.onButtonPressed += AddText;
-		EventSystem.clearKeyboard += deleteKeyboardText;
+		EventSystem.onClearKeyboard += deleteKeyboardText;
+		EventSystem.onBackspace += Backspace;
 		textFlied = this.GetComponent<UnityEngine.UI.Text>();
 		FlashIndicator();
 
@@ -21,9 +23,16 @@ public class KeyBoard : MonoBehaviour {
 		}
 
 		textFlied.text = textFlied.text.Substring(0, textFlied.text.Length - 1);
+		Debug.Log("Check addletter");
 		textFlied.text += letterToAdd;
-		EventSystem.validateScentence(textFlied.text);
+		EventSystem.onValidateScentence(textFlied.text);
 		textFlied.text += "|";
+	}
+
+	void Backspace() {
+		if(textFlied.text.Length >= 2) {
+			textFlied.text = textFlied.text.Substring(0, textFlied.text.Length - 2) + "|";
+		}
 	}
 
 	void DeleteText() {

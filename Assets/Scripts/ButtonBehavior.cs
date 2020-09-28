@@ -24,7 +24,12 @@ public class ButtonBehavior : MonoBehaviour
 
     public void OnButtonDown()
     {
-        EventSystem.onButtonPressed(Letter);
+        if(Letter == '<') {
+            EventSystem.onBackspace();
+        } else {
+            EventSystem.onButtonPressed(Letter);
+        }
+        Debug.Log("OnButtonPressed");
         MoveButton(AmountToMove);
         ChangeMaterial(PressMaterial);
     }
@@ -34,18 +39,6 @@ public class ButtonBehavior : MonoBehaviour
         MoveButton(-AmountToMove);
         ChangeMaterial(DefaultMaterial);
     }
-
-    /*
-    private void OnMouseEnter()
-    {
-        ChangeMaterial(HowerOwer);
-    }
-
-    private void OnMouseExit()
-    {
-        ChangeMaterial(DefaultMaterial);
-    }
-    */
 
     void ChangeMaterial(Material newMaterial)
     {

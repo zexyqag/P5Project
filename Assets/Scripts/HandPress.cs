@@ -18,6 +18,7 @@ public class HandPress : MonoBehaviour
         
     }
 
+    [ContextMenu("HitButton")]
     public void HitButton()
     {
         if (!hit.transform.gameObject.GetComponent<ButtonBehavior>()) return;
