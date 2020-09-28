@@ -3379,7 +3379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e3832f7cd28a24282c7a32ba4310c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StringArray: {fileID: 11400000, guid: fa22c681328a38447a0d4829e30898f8, type: 2}
+  phrasesToWriteAsset: {fileID: 0}
 --- !u!1 &881326123
 GameObject:
   m_ObjectHideFlags: 0

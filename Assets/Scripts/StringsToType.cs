@@ -10,21 +10,20 @@ using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Text))]
 public class StringsToType : MonoBehaviour {
-	public StringArrayScriptableObject StringArray;
-	private List<string> strings = new List<string>();
+	private List<string> phrasesToWriteStringList = new List<string>();
 	private Text textField;
-	private int elementTracker;
-	public TextAsset phrasesToWrite;
+	private int elementTracker = 0, phraseIndex = 0;
+	public TextAsset phrasesToWriteAsset;
 
 	//public UnityEvent OnStringMatch;
 
 	private void Awake() {
 		textField = GetComponent<Text>();
-		elementTracker = 0;
-		if(phrasesToWrite) {
-			strings = new List<string>(phrasesToWrite.text.Split('\n'));
+		if(phrasesToWriteAsset) {
+			phrasesToWriteStringList = new List<string>(phrasesToWriteAsset.text.Split('\n'));
 		} else {
 			Debug.Log("Not text file assigned to: " + this + " on " + gameObject.name);
+			phrasesToWriteStringList = new List<string> { "No text file assigned", "You forgot to assgin a text file", "Missing text file", "Text file be gone" };
 		}
 	}
 
@@ -35,9 +34,10 @@ public class StringsToType : MonoBehaviour {
 		EventSystem.onBackspace += Backspace;
 	}
 
+	[ContextMenu("shuffle list")]
 	private void Initialize() {
-		strings = StringArray.getStringsToTypeCopy();
-		strings.Shuffle();
+		phraseIndex = 0;
+		phrasesToWriteStringList.Shuffle();
 		nextText();
 	}
 
@@ -69,11 +69,11 @@ public class StringsToType : MonoBehaviour {
 
 	[ContextMenu("nextText")]
 	private void nextText() {
-		if(strings.Count != 0) {
-			textField.text = strings.First<string>();
-			strings.RemoveAt(0);
-		} else {
+		if(phraseIndex >= phrasesToWriteStringList.Count) {
 			Initialize();
+		} else {
+			textField.text = phrasesToWriteStringList.ElementAt<string>(phraseIndex).ToUpper();
+			phraseIndex++;
 		}
 	}
 }

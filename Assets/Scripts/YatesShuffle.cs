@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 public static class YatesShuffle {
     private static readonly Random rng = new Random();
 
@@ -16,3 +17,5 @@ public static class YatesShuffle {
         }
     }
 }
+
+
