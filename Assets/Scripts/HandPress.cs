@@ -15,7 +15,12 @@ public class HandPress : MonoBehaviour
         Debug.DrawRay(this.transform.position, rayDirection * 10, Color.yellow);
 
         Physics.Raycast(this.transform.position, rayDirection, out hit, 10);
-        
+
+        if (hit.transform.gameObject.GetComponent<ButtonBehavior>())
+        {
+            hit.transform.gameObject.GetComponent<ButtonBehavior>().HowerMaterial();
+        }
+
     }
 
     [ContextMenu("HitButton")]
@@ -33,7 +38,7 @@ public class HandPress : MonoBehaviour
     {
         if (lastButtonPressed.GetComponent<ButtonBehavior>())
         {
-            lastButtonPressed.GetComponent<ButtonBehavior>().OnButtonExit()
+            lastButtonPressed.GetComponent<ButtonBehavior>().OnButtonExit();
         }
         lastButtonPressed = null;
     }
