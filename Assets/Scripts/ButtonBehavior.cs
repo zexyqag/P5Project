@@ -16,11 +16,22 @@ public class ButtonBehavior : MonoBehaviour
     public Vector3 AmountToMove;
     #endregion
 
+    private bool isHowerOver;
+
     private void Start()
     {
         LetterText.GetComponent<TextMesh>().text = Letter.ToString();
         ChangeMaterial(DefaultMaterial);
     }
+
+    private void Update()
+    {
+        if (!isHowerOver)
+        {
+            ChangeMaterial(DefaultMaterial);
+        }
+    }
+
 
     public void OnButtonDown()
     {
@@ -40,6 +51,14 @@ public class ButtonBehavior : MonoBehaviour
         ChangeMaterial(DefaultMaterial);
     }
 
+     public void HowerMaterial()
+     {
+        ChangeMaterial(HowerOwer);
+        isHowerOver = true;
+        StartCoroutine(Wait());
+
+    }
+
     void ChangeMaterial(Material newMaterial)
     {
         this.gameObject.GetComponent<MeshRenderer>().material = newMaterial;
@@ -48,6 +67,13 @@ public class ButtonBehavior : MonoBehaviour
     void MoveButton(Vector3 moveAmount)
     {
         transform.Translate(moveAmount);
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.01f);
+        isHowerOver = false;
+
     }
 
 }
