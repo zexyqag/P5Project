@@ -19,8 +19,15 @@ public class StringsToType : MonoBehaviour {
 
 	private void Awake() {
 		textField = GetComponent<Text>();
+
 		if(phrasesToWriteAsset) {
-			phrasesToWriteStringList = new List<string>(phrasesToWriteAsset.text.Split('\n'));
+			using(System.IO.StringReader reader = new System.IO.StringReader(phrasesToWriteAsset.text)) {
+				string line;
+				while((line = reader.ReadLine()) != null) {
+					phrasesToWriteStringList.Add(line);
+				}
+			}
+			//phrasesToWriteStringList = new List<string>(phrasesToWriteAsset.text.Replace("\r", "").Split('\n'));
 		} else {
 			Debug.Log("Not text file assigned to: " + this + " on " + gameObject.name);
 			phrasesToWriteStringList = new List<string> { "No text file assigned", "You forgot to assgin a text file", "Missing text file", "Text file be gone" };
@@ -59,7 +66,8 @@ public class StringsToType : MonoBehaviour {
 	}
 
 	public void CheckStringForMatch(string input) {
-		if(input.ToLower().Equals(textField.text.ToLower())) {
+		Debug.Log(input + input.Length + '\n' + textField.text + textField.text.Length);
+		if(input.Equals(textField.text)) {
 			//OnStringMatch.Invoke();
 			EventSystem.onClearKeyboard();
 			elementTracker = 0;
