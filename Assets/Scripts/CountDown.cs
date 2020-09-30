@@ -9,11 +9,11 @@ public class CountDown : MonoBehaviour
 	public UnityEvent Event;
 
 	private void Start() {
-		StartCoroutine(test());
+		StartCoroutine(wait(Time));
 	}
 
-	IEnumerator test() {
-		yield return new WaitForSeconds(Time);
+	IEnumerator wait(float time) {
+		yield return new WaitForSeconds(time);
 		Event.Invoke();
 	}
 }
