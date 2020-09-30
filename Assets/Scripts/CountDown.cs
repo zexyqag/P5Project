@@ -1,19 +1,22 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class CountDown : MonoBehaviour
 {
-	public float Time = 1;
+	public float TimeLeft = 1;
 	public UnityEvent Event;
 
-	private void Start() {
-		StartCoroutine(wait(Time));
+	public void StartCountdown() {
+		StartCoroutine(wait());
 	}
 
-	IEnumerator wait(float time) {
-		yield return new WaitForSeconds(time);
+	IEnumerator wait() {
+		while(TimeLeft > 0) {
+			TimeLeft -= Time.deltaTime;
+			yield return null;
+		}
+
 		Event.Invoke();
 	}
 }

@@ -15,8 +15,6 @@ public class StringsToType : MonoBehaviour {
 	private int elementTracker = 0, phraseIndex = 0;
 	public TextAsset phrasesToWriteAsset;
 
-	//public UnityEvent OnStringMatch;
-
 	private void Awake() {
 		textField = GetComponent<Text>();
 
@@ -27,7 +25,6 @@ public class StringsToType : MonoBehaviour {
 					phrasesToWriteStringList.Add(line);
 				}
 			}
-			//phrasesToWriteStringList = new List<string>(phrasesToWriteAsset.text.Replace("\r", "").Split('\n'));
 		} else {
 			Debug.Log("Not text file assigned to: " + this + " on " + gameObject.name);
 			phrasesToWriteStringList = new List<string> { "No text file assigned", "You forgot to assgin a text file", "Missing text file", "Text file be gone" };
@@ -51,10 +48,8 @@ public class StringsToType : MonoBehaviour {
 	private void doesCharacterMatch(char inputLetter) {
 		if(textField.text.Length > elementTracker) {
 			if(inputLetter != textField.text[elementTracker]) {
-				Debug.Log("!Correct");
 			}
 		}
-
 		elementTracker++;
 	}
 
@@ -66,9 +61,7 @@ public class StringsToType : MonoBehaviour {
 	}
 
 	public void CheckStringForMatch(string input) {
-		Debug.Log(input + input.Length + '\n' + textField.text + textField.text.Length);
 		if(input.Equals(textField.text)) {
-			//OnStringMatch.Invoke();
 			EventSystem.onClearKeyboard();
 			elementTracker = 0;
 			nextText();

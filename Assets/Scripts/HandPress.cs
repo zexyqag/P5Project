@@ -6,7 +6,7 @@ public class HandPress : MonoBehaviour {
 
 
 	RaycastHit hit;
-	private GameObject lastButtonPressed;
+	private ButtonBehavior lastButtonPressed, currentButtonHovered;
 
 	private void Update() {
 		Vector3 rayDirection = (transform.forward + transform.forward + transform.up).normalized;
@@ -14,26 +14,29 @@ public class HandPress : MonoBehaviour {
 
 		if(Physics.Raycast(this.transform.position, rayDirection, out hit, 10)) {
 			if(hit.transform.gameObject.GetComponent<ButtonBehavior>()) {
-				hit.transform.gameObject.GetComponent<ButtonBehavior>().HowerMaterial();
+				currentButtonHovered = hit.transform.gameObject.GetComponent<ButtonBehavior>();
+				currentButtonHovered.HowerMaterial();
+			} else {
+				currentButtonHovered = null;
 			}
 		}
 	}
 
 	[ContextMenu("HitButton")]
 	public void HitButton() {
-		if(!hit.transform.gameObject.GetComponent<ButtonBehavior>())
+		if(!currentButtonHovered)
 			return;
 
-		hit.transform.gameObject.GetComponent<ButtonBehavior>().OnButtonDown();
-		lastButtonPressed = hit.transform.gameObject;
+		currentButtonHovered.OnButtonDown();
+		lastButtonPressed = currentButtonHovered;
 
 
 	}
 
 	public void ReliseButton() {
-		if(lastButtonPressed.GetComponent<ButtonBehavior>()) {
-			lastButtonPressed.GetComponent<ButtonBehavior>().OnButtonExit();
+		if(lastButtonPressed) {
+			lastButtonPressed.OnButtonExit();
+			lastButtonPressed = null;
 		}
-		lastButtonPressed = null;
 	}
 }
