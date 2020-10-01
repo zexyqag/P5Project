@@ -27,8 +27,8 @@ public class ButtonBehavior : MonoBehaviour
         ChangeMaterial(MatDefoult);
 
         PosDefoult = this.transform.position;
-        PosHower += PosDefoult;
-        PosPress += PosDefoult;
+        PosHower = PosHower + PosDefoult;
+        PosPress = PosPress + PosDefoult;
     }
 
     public void OnButtonDown()
