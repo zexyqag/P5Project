@@ -59,9 +59,13 @@ public class ButtonBehavior : MonoBehaviour
 
     public void HowerOver()
     {
+        if (!isHower)
+        {
+            ChangeMaterial(MatHower);
+            MoveButton(PosHower);
+        }
         isHower = true;
-        ChangeMaterial(MatHower);
-        MoveButton(PosHower);
+        
     }
 
     public void ButtonExit()
