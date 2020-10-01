@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using UnityEditor;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,8 +14,8 @@ using UnityEngine.UIElements;
 public class StringsToType : MonoBehaviour {
 	private List<string> phrasesToWriteStringList = new List<string>();
 	private Text textField;
-	private int elementTracker = 0, phraseIndex = 0;
-	public TextAsset phrasesToWriteAsset;
+	private int elementTracker = 0, phraseIndex = 0, errorRate = 0;
+	public TextAsset phrasesToWriteAsset, errorRateAsset;
 
 	private void Awake() {
 		textField = GetComponent<Text>();
@@ -48,6 +50,7 @@ public class StringsToType : MonoBehaviour {
 	private void doesCharacterMatch(char inputLetter) {
 		if(textField.text.Length > elementTracker) {
 			if(inputLetter != textField.text[elementTracker]) {
+				++errorRate;
 			}
 		}
 		elementTracker++;
@@ -57,7 +60,7 @@ public class StringsToType : MonoBehaviour {
 		if(elementTracker == 0)
 			return;
 
-		elementTracker--;
+		--elementTracker;
 	}
 
 	public void CheckStringForMatch(string input) {
@@ -74,7 +77,7 @@ public class StringsToType : MonoBehaviour {
 			Initialize();
 		} else {
 			textField.text = phrasesToWriteStringList.ElementAt<string>(phraseIndex).ToUpper();
-			phraseIndex++;
+			++phraseIndex;
 		}
 	}
 }
