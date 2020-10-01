@@ -16,11 +16,20 @@ public class HandPress : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-		CurrentButtonHower = other.gameObject;
+        if (other.GetComponent<ButtonBehavior>())
+        {
+            other.GetComponent<ButtonBehavior>().HowerOver();
+        }
+        CurrentButtonHower = other.gameObject;
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.GetComponent<ButtonBehavior>())
+        {
+            other.GetComponent<ButtonBehavior>().ButtonExit();
+        }
+
         CurrentButtonHower = null;
     }
 
