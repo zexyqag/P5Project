@@ -25,7 +25,6 @@ public class HandPress : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("exit");
 
         if (other.GetComponent<ButtonBehavior>())
         {
