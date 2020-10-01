@@ -5,38 +5,42 @@ using UnityEngine;
 public class HandPress : MonoBehaviour {
 
 
-	RaycastHit hit;
-	private ButtonBehavior lastButtonPressed, currentButtonHovered;
+
+	private GameObject CurrentButtonHower;
+    private GameObject LastButton;
+
 
 	private void Update() {
-		Vector3 rayDirection = (transform.forward + transform.forward + transform.up).normalized;
-		Debug.DrawRay(this.transform.position, rayDirection * 10, Color.yellow);
 
-		if(Physics.Raycast(this.transform.position, rayDirection, out hit, 10)) {
-			if(hit.transform.gameObject.GetComponent<ButtonBehavior>()) {
-				currentButtonHovered = hit.transform.gameObject.GetComponent<ButtonBehavior>();
-				currentButtonHovered.HowerMaterial();
-			} else {
-				currentButtonHovered = null;
-			}
-		}
 	}
 
-	[ContextMenu("HitButton")]
+    private void OnTriggerEnter(Collider other)
+    {
+		CurrentButtonHower = other.gameObject;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        CurrentButtonHower = null;
+    }
+
+    [ContextMenu("HitButton")]
 	public void HitButton() {
-		if(!currentButtonHovered)
-			return;
 
-		currentButtonHovered.OnButtonDown();
-		lastButtonPressed = currentButtonHovered;
-
+        if (CurrentButtonHower && CurrentButtonHower.GetComponent<ButtonBehavior>())
+        {
+            LastButton = CurrentButtonHower;
+            CurrentButtonHower.GetComponent<ButtonBehavior>().OnButtonDown();
+        }
 
 	}
 
 	public void ReliseButton() {
-		if(lastButtonPressed) {
-			lastButtonPressed.OnButtonExit();
-			lastButtonPressed = null;
-		}
-	}
+        if (LastButton && LastButton.GetComponent<ButtonBehavior>())
+        {
+            LastButton.GetComponent<ButtonBehavior>().OnButtonUP();
+            LastButton = null;
+            
+        }
+    }
 }

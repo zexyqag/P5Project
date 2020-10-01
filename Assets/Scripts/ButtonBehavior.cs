@@ -9,29 +9,27 @@ public class ButtonBehavior : MonoBehaviour
     public char Letter;
     public GameObject LetterText;
 
-    public Material HowerOwer;
-    public Material DefaultMaterial;
-    public Material PressMaterial;
+    public Material MatHower;
+    public Material MatDefoult;
+    public Material MatPress;
 
-    public Vector3 AmountToMove;
+    public Vector3 PosDefoult;
+    public Vector3 PosHower;
+    public Vector3 PosPress;
     #endregion
 
-    private bool isHowerOver;
+    private bool isHower;
+
 
     private void Start()
     {
         LetterText.GetComponent<TextMesh>().text = Letter.ToString();
-        ChangeMaterial(DefaultMaterial);
-    }
+        ChangeMaterial(MatDefoult);
 
-    private void Update()
-    {
-        if (!isHowerOver)
-        {
-            ChangeMaterial(DefaultMaterial);
-        }
+        PosDefoult = this.transform.position;
+        PosHower += PosDefoult;
+        PosPress += PosDefoult;
     }
-
 
     public void OnButtonDown()
     {
@@ -40,24 +38,39 @@ public class ButtonBehavior : MonoBehaviour
         } else {
             EventSystem.onButtonPressed(Letter);
         }
-        Debug.Log("OnButtonPressed");
-        MoveButton(AmountToMove);
-        ChangeMaterial(PressMaterial);
+        MoveButton(PosPress);
+        ChangeMaterial(MatPress);
     }
 
-    public void OnButtonExit()
+    public void OnButtonUP()
     {
-        MoveButton(-AmountToMove);
-        ChangeMaterial(DefaultMaterial);
+        if (isHower)
+        {
+            ChangeMaterial(MatHower);
+            MoveButton(PosHower);
+        }
+        else
+        {
+            ChangeMaterial(MatDefoult);
+            MoveButton(PosDefoult);
+        }
+
     }
 
-     public void HowerMaterial()
-     {
-        ChangeMaterial(HowerOwer);
-        isHowerOver = true;
-        StartCoroutine(Wait());
-
+    public void HowerOver()
+    {
+        isHower = true;
+        ChangeMaterial(MatHower);
+        MoveButton(PosHower);
     }
+
+    public void ButtonExit()
+    {
+        isHower = false;
+        ChangeMaterial(MatDefoult);
+        MoveButton(PosDefoult);
+    }
+
 
     void ChangeMaterial(Material newMaterial)
     {
@@ -67,13 +80,6 @@ public class ButtonBehavior : MonoBehaviour
     void MoveButton(Vector3 moveAmount)
     {
         transform.Translate(moveAmount);
-    }
-
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(0.01f);
-        isHowerOver = false;
-
     }
 
 }
