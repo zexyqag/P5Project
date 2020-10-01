@@ -77,9 +77,9 @@ public class ButtonBehavior : MonoBehaviour
         this.gameObject.GetComponent<MeshRenderer>().material = newMaterial;
     }
 
-    void MoveButton(Vector3 moveAmount)
+    void MoveButton(Vector3 newPos)
     {
-        transform.Translate(moveAmount);
+        this.transform.position = newPos;
     }
 
 }
