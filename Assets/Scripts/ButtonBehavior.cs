@@ -9,29 +9,30 @@ public class ButtonBehavior : MonoBehaviour
     public char Letter;
     public GameObject LetterText;
 
-    public Material HowerOwer;
-    public Material DefaultMaterial;
-    public Material PressMaterial;
+    public Material MatHower;
+    public Material MatDefoult;
+    public Material MatPress;
 
-    public Vector3 AmountToMove;
+    public Vector3 PosDefoult;
+    public Vector3 PosHower;
+    public Vector3 PosPress;
+
+    public bool isPressDown;
     #endregion
 
-    private bool isHowerOver;
+    private bool isHower;
+
 
     private void Start()
     {
         LetterText.GetComponent<TextMesh>().text = Letter.ToString();
-        ChangeMaterial(DefaultMaterial);
-    }
+        ChangeMaterial(MatDefoult);
 
-    private void Update()
-    {
-        if (!isHowerOver)
-        {
-            ChangeMaterial(DefaultMaterial);
-        }
+        PosDefoult = this.transform.position;
+        PosHower = PosHower + PosDefoult;
+        PosPress = PosPress + PosDefoult;
+        isPressDown = false;
     }
-
 
     public void OnButtonDown()
     {
@@ -40,40 +41,58 @@ public class ButtonBehavior : MonoBehaviour
         } else {
             EventSystem.onButtonPressed(Letter);
         }
-        Debug.Log("OnButtonPressed");
-        MoveButton(AmountToMove);
-        ChangeMaterial(PressMaterial);
+        MoveButton(PosPress);
+        ChangeMaterial(MatPress);
+        isPressDown = true;
     }
 
-    public void OnButtonExit()
+    public void OnButtonUP()
     {
-        MoveButton(-AmountToMove);
-        ChangeMaterial(DefaultMaterial);
+        if (isHower)
+        {
+            ChangeMaterial(MatHower);
+            MoveButton(PosHower);
+        }
+        else
+        {
+            ChangeMaterial(MatDefoult);
+            MoveButton(PosDefoult);
+        }
+        isPressDown = false;
+
     }
 
-     public void HowerMaterial()
-     {
-        ChangeMaterial(HowerOwer);
-        isHowerOver = true;
-        StartCoroutine(Wait());
-
+    public void HowerOver()
+    {
+        if (!isHower && !isPressDown)
+        {
+            ChangeMaterial(MatHower);
+            MoveButton(PosHower);
+        }
+        isHower = true;
     }
+
+    public void ButtonExit()
+    {
+        isHower = false;
+
+        if (!isPressDown)
+        {
+            ChangeMaterial(MatDefoult);
+            MoveButton(PosDefoult);
+        }
+        
+    }
+
 
     void ChangeMaterial(Material newMaterial)
     {
         this.gameObject.GetComponent<MeshRenderer>().material = newMaterial;
     }
 
-    void MoveButton(Vector3 moveAmount)
+    void MoveButton(Vector3 newPos)
     {
-        transform.Translate(moveAmount);
-    }
-
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(0.01f);
-        isHowerOver = false;
-
+        this.transform.position = newPos;
     }
 
 }
