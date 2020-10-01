@@ -16,6 +16,8 @@ public class ButtonBehavior : MonoBehaviour
     public Vector3 PosDefoult;
     public Vector3 PosHower;
     public Vector3 PosPress;
+
+    public bool isPressDown;
     #endregion
 
     private bool isHower;
@@ -29,6 +31,7 @@ public class ButtonBehavior : MonoBehaviour
         PosDefoult = this.transform.position;
         PosHower = PosHower + PosDefoult;
         PosPress = PosPress + PosDefoult;
+        isPressDown = false;
     }
 
     public void OnButtonDown()
@@ -40,6 +43,7 @@ public class ButtonBehavior : MonoBehaviour
         }
         MoveButton(PosPress);
         ChangeMaterial(MatPress);
+        isPressDown = true;
     }
 
     public void OnButtonUP()
@@ -54,12 +58,13 @@ public class ButtonBehavior : MonoBehaviour
             ChangeMaterial(MatDefoult);
             MoveButton(PosDefoult);
         }
+        isPressDown = false;
 
     }
 
     public void HowerOver()
     {
-        if (!isHower)
+        if (!isHower && !isPressDown)
         {
             ChangeMaterial(MatHower);
             MoveButton(PosHower);
@@ -70,8 +75,13 @@ public class ButtonBehavior : MonoBehaviour
     public void ButtonExit()
     {
         isHower = false;
-        ChangeMaterial(MatDefoult);
-        MoveButton(PosDefoult);
+
+        if (!isPressDown)
+        {
+            ChangeMaterial(MatDefoult);
+            MoveButton(PosDefoult);
+        }
+        
     }
 
 
