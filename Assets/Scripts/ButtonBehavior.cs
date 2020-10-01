@@ -65,7 +65,6 @@ public class ButtonBehavior : MonoBehaviour
             MoveButton(PosHower);
         }
         isHower = true;
-        
     }
 
     public void ButtonExit()

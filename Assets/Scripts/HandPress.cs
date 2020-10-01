@@ -38,7 +38,7 @@ public class HandPress : MonoBehaviour {
     [ContextMenu("HitButton")]
 	public void HitButton() {
 
-        if (CurrentButtonHower && CurrentButtonHower.GetComponent<ButtonBehavior>())
+        if (CurrentButtonHower.GetComponent<ButtonBehavior>())
         {
             LastButton = CurrentButtonHower;
             CurrentButtonHower.GetComponent<ButtonBehavior>().OnButtonDown();
