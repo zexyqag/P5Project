@@ -8,6 +8,29 @@ public class DataSaver : MonoBehaviour {
 	private int TotalErrorRaycast = 0, TotalErrorHeadHand = 0, TotalPhrasesLengthRaycast = 0, TotalPhrasesLengthHeadHand = 0;
 	[SerializeField] private TextAsset errorRateAsset;
 
+
+	private void Start() {
+		EventSystem.onTypedCorrect += addTotalPhrasesLength;
+		EventSystem.onTypedError += addTotalPhrasesLength;
+	}
+
+
+	public void addTotalError(bool isRaycastSecene) {
+		if(isRaycastSecene) {
+			++TotalErrorRaycast;
+		} else {
+			++TotalErrorHeadHand;
+		}
+	}
+
+	public void addTotalPhrasesLength(bool isRaycastSecene) {
+		if(isRaycastSecene) {
+			++TotalPhrasesLengthRaycast;
+		} else {
+			++TotalPhrasesLengthHeadHand;
+		}
+	}
+
 	public void WriteToFile() {
 		if(!errorRateAsset) {
 			Debug.Log("TextAsset missing on: " + this);

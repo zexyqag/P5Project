@@ -16,6 +16,7 @@ public class StringsToType : MonoBehaviour {
 	private Text textField;
 	private int elementTracker = 0, phraseIndex = 0, errorRate = 0;
 	public TextAsset phrasesToWriteAsset, errorRateAsset;
+	public bool isRaycastSecene;
 
 	private void Awake() {
 		textField = GetComponent<Text>();
@@ -50,7 +51,9 @@ public class StringsToType : MonoBehaviour {
 	private void doesCharacterMatch(char inputLetter) {
 		if(textField.text.Length > elementTracker) {
 			if(inputLetter != textField.text[elementTracker]) {
-				++errorRate;
+				EventSystem.onTypedError(isRaycastSecene);
+			} else {
+				EventSystem.onTypedCorrect(isRaycastSecene);
 			}
 		}
 		elementTracker++;
