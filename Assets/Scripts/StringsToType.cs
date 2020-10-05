@@ -36,7 +36,7 @@ public class StringsToType : MonoBehaviour {
 
 	private void Start() {
 		Initialize();
-		EventSystem.onValidateScentence += CheckStringForMatch;
+		EventSystem.onValidateSentence += CheckStringForMatch;
 		EventSystem.onButtonPressed += doesCharacterMatch;
 		EventSystem.onBackspace += Backspace;
 	}

@@ -10,7 +10,7 @@ public class ButtonBehavior : MonoBehaviour
     public GameObject LetterText;
 
     public Material MatHower;
-    public Material MatDefoult;
+    public Material MatDefault;
     public Material MatPress;
 
     public Vector3 PosDefoult;
@@ -20,13 +20,13 @@ public class ButtonBehavior : MonoBehaviour
     public bool isPressDown;
     #endregion
 
-    private bool isHower;
+    private bool isHover;
 
 
     private void Start()
     {
         LetterText.GetComponent<TextMesh>().text = Letter.ToString();
-        ChangeMaterial(MatDefoult);
+        ChangeMaterial(MatDefault);
 
         PosDefoult = this.transform.position;
         PosHower = PosHower + PosDefoult;
@@ -48,14 +48,14 @@ public class ButtonBehavior : MonoBehaviour
 
     public void OnButtonUP()
     {
-        if (isHower)
+        if (isHover)
         {
             ChangeMaterial(MatHower);
             MoveButton(PosHower);
         }
         else
         {
-            ChangeMaterial(MatDefoult);
+            ChangeMaterial(MatDefault);
             MoveButton(PosDefoult);
         }
         isPressDown = false;
@@ -64,21 +64,21 @@ public class ButtonBehavior : MonoBehaviour
 
     public void HowerOver()
     {
-        if (!isHower && !isPressDown)
+        if (!isHover && !isPressDown)
         {
             ChangeMaterial(MatHower);
             MoveButton(PosHower);
         }
-        isHower = true;
+        isHover = true;
     }
 
     public void ButtonExit()
     {
-        isHower = false;
+        isHover = false;
 
         if (!isPressDown)
         {
-            ChangeMaterial(MatDefoult);
+            ChangeMaterial(MatDefault);
             MoveButton(PosDefoult);
         }
         

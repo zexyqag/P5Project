@@ -5,7 +5,7 @@ using System;
 
 public static class EventSystem {
 	public static Action<char> onButtonPressed;
-	public static Action<string> onValidateScentence;
+	public static Action<string> onValidateSentence;
 	public static Action onClearKeyboard;
 	public static Action onBackspace;
 	public static Action<bool> onTypedError;
