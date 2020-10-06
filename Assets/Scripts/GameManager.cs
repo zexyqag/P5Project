@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
 				scenes.Add(scene);
 		}
 		onStart.Invoke();
+
 	}
 
 	public void LoadScene(SceneAsset sceneAsset) {

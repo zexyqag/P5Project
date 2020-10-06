@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Valve.VR.InteractionSystem
-{
     public class HandPress : MonoBehaviour
     {
 
@@ -37,7 +35,6 @@ namespace Valve.VR.InteractionSystem
             CurrentButtonHower = null;
         }
 
-        [ContextMenu("HitButton")]
         public void HitButton()
         {
 
@@ -45,13 +42,12 @@ namespace Valve.VR.InteractionSystem
             {
                 LastButton = CurrentButtonHower;
                 CurrentButtonHower.GetComponent<ButtonBehavior>().OnButtonDown();
-                VibrateHand(10000);
 
             }
 
         }
 
-        public void ReliseButton()
+        public void ReleaseButton()
         {
             if (LastButton && LastButton.GetComponent<ButtonBehavior>())
             {
@@ -61,19 +57,6 @@ namespace Valve.VR.InteractionSystem
             }
         }
 
-        void VibrateHand(ushort vibrationInMilisecons)
-        {
-
-            Hand hand = this.GetComponentInParent<Hand>();
-            if (hand != null)
-            {
-                Debug.Log("vibrate");
-                //hand.TriggerHapticPulse(vibrationInMilisecons);
-                
-            }
-        }
-
 
     }
-}
 

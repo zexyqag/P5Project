@@ -5,40 +5,29 @@ using UnityEngine.UI;
 using System;
 
 public class KeyBoard : MonoBehaviour {
-	private Text textFlied;
+	private Text textField;
 	private void Start() {
 		EventSystem.onButtonPressed += AddText;
 		EventSystem.onClearKeyboard += deleteKeyboardText;
 		EventSystem.onBackspace += Backspace;
-		textFlied = this.GetComponent<UnityEngine.UI.Text>();
+		textField = this.GetComponent<UnityEngine.UI.Text>();
 		FlashIndicator();
 
 	}
 
 	void AddText(char letterToAdd) {
-		if(letterToAdd.Equals('<')) {
-			DeleteText();
-			return;
-		}
 
-		textFlied.text = textFlied.text.Substring(0, textFlied.text.Length - 1);
+		textField.text = textField.text.Substring(0, textField.text.Length - 1);
 		Debug.Log("Check addletter");
-		textFlied.text += letterToAdd;
-		EventSystem.onValidateScentence(textFlied.text);
-		textFlied.text += "|";
+		textField.text += letterToAdd;
+		EventSystem.onValidateSentence(textField.text);
+		textField.text += "|";
 	}
 
 	void Backspace() {
-		if(textFlied.text.Length >= 2) {
-			textFlied.text = textFlied.text.Substring(0, textFlied.text.Length - 2) + "|";
+		if(textField.text.Length >= 2) {
+			textField.text = textField.text.Substring(0, textField.text.Length - 2) + "|";
 		}
-	}
-
-	void DeleteText() {
-		if(textFlied.text.Length <= 1) { return; }
-
-		textFlied.text = textFlied.text.Substring(0, textFlied.text.Length - 1);
-
 	}
 
 	void FlashIndicator() {
@@ -46,16 +35,16 @@ public class KeyBoard : MonoBehaviour {
 	}
 
 	private void deleteKeyboardText() {
-		textFlied.text = "";
+		textField.text = "|";
 	}
 
 	IEnumerator WaitforTime(float timeToWait) {
-		if(textFlied.text.Length >= 1) {
+		if(textField.text.Length >= 1) {
 			yield return new WaitForSeconds(timeToWait);
-			textFlied.text = textFlied.text.Substring(0, textFlied.text.Length - 1) + " ";
+			textField.text = textField.text.Substring(0, textField.text.Length - 1) + " ";
 
 			yield return new WaitForSeconds(timeToWait);
-			textFlied.text = textFlied.text.Substring(0, textFlied.text.Length - 1) + "|";
+			textField.text = textField.text.Substring(0, textField.text.Length - 1) + "|";
 		}
 
 		FlashIndicator();
