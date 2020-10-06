@@ -47,5 +47,6 @@ public class StringListFromFileHandler : MonoBehaviour {
 			++phraseIndex;
 		}
 		textField.text = currentString;
+		EventSystem.onUpdateStringToMatch(currentString);
 	}
 }
