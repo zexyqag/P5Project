@@ -9,11 +9,11 @@ public class DataSaver : MonoBehaviour {
 	[SerializeField] private TextAsset errorRateAsset;
 
 
-	private void Start() {
+	private void Awake() {
 		EventSystem.onTypedCorrect += addTotalPhrasesLength;
 		EventSystem.onTypedError += addTotalError;
+		EventSystem.onSaveData += WriteToFile;
 	}
-
 
 	public void addTotalError(bool isRaycastSecene) {
 		if(isRaycastSecene) {

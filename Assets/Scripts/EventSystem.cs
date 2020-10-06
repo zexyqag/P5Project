@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor;
 
 public static class EventSystem {
 	public static Action<char> onButtonPressed;
-	public static Action<string> onValidateSentence;
-	public static Action onClearKeyboard;
-	public static Action onBackspace;
-	public static Action<bool> onTypedError;
-	public static Action<bool> onTypedCorrect;
+	public static Action<string> onValidateSentence, onUpdateStringToMatch;
+	public static Action<bool> onTypedError, onTypedCorrect;
+	public static Action onClearKeyboard, onBackspace, onNextString, onSaveData;
 }
