@@ -18,6 +18,8 @@ public class ButtonBehavior : MonoBehaviour
     public Vector3 PosPress;
 
     public bool isPressDown;
+
+    public AudioPlayer audioPlayer;
     #endregion
 
     private bool isHower;
@@ -41,6 +43,7 @@ public class ButtonBehavior : MonoBehaviour
         } else {
             EventSystem.onButtonPressed(Letter);
         }
+        audioPlayer.playAudio();
         MoveButton(PosPress);
         ChangeMaterial(MatPress);
         isPressDown = true;
