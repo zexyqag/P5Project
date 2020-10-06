@@ -37,8 +37,9 @@ using UnityEngine;
 
         public void HitButton()
         {
+        Debug.Log("hit");
 
-            if (CurrentButtonHower.GetComponent<ButtonBehavior>())
+        if (CurrentButtonHower.GetComponent<ButtonBehavior>())
             {
                 LastButton = CurrentButtonHower;
                 CurrentButtonHower.GetComponent<ButtonBehavior>().OnButtonDown();
@@ -49,6 +50,7 @@ using UnityEngine;
 
         public void ReleaseButton()
         {
+        Debug.Log("relise");
             if (LastButton && LastButton.GetComponent<ButtonBehavior>())
             {
                 LastButton.GetComponent<ButtonBehavior>().OnButtonUP();

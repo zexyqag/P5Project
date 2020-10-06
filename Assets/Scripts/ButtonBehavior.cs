@@ -43,7 +43,7 @@ public class ButtonBehavior : MonoBehaviour
         } else {
             EventSystem.onButtonPressed(Letter);
         }
-        audioPlayer.playAudio();
+       // audioPlayer.playAudio();
         MoveButton(PosPress);
         ChangeMaterial(MatPress);
         isPressDown = true;

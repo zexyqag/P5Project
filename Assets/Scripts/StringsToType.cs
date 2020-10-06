@@ -37,7 +37,7 @@ public class StringsToType : MonoBehaviour {
 	private void Start() {
 		Initialize();
 		EventSystem.onValidateSentence += CheckStringForMatch;
-		EventSystem.onButtonPressed += doesCharacterMatch;
+		//EventSystem.onButtonPressed += doesCharacterMatch;
 		EventSystem.onBackspace += Backspace;
 	}
 
@@ -51,7 +51,7 @@ public class StringsToType : MonoBehaviour {
 	private void doesCharacterMatch(char inputLetter) {
 		if(textField.text.Length > elementTracker) {
 			if(inputLetter != textField.text[elementTracker]) {
-				//EventSystem.onTypedError(isRaycastSecene);
+				EventSystem.onTypedError(isRaycastSecene);
 			} else {
 				EventSystem.onTypedCorrect(isRaycastSecene);
 			}
