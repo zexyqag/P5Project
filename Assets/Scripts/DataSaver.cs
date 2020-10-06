@@ -11,7 +11,7 @@ public class DataSaver : MonoBehaviour {
 
 	private void Start() {
 		EventSystem.onTypedCorrect += addTotalPhrasesLength;
-		EventSystem.onTypedError += addTotalPhrasesLength;
+		EventSystem.onTypedError += addTotalError;
 	}
 
 
@@ -41,8 +41,8 @@ public class DataSaver : MonoBehaviour {
 		StreamWriter writer = new StreamWriter(path, true);
 		writer.WriteLine(System.DateTime.Now.ToString()
 						+ ";" + TotalErrorRaycast.ToString()
-						+ ";" + TotalErrorHeadHand.ToString()
 						+ ";" + TotalPhrasesLengthRaycast.ToString()
+						+ ";" + TotalErrorHeadHand.ToString()
 						+ ";" + TotalPhrasesLengthHeadHand.ToString());
 		writer.Close();
 		AssetDatabase.ImportAsset(path);
