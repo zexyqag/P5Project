@@ -1037,3 +1037,16 @@ MonoBehaviour:
   Wrong: {fileID: 8300000, guid: 307a28ea3699dc248ab901d0d4a552d2, type: 3}
   KeyboardClick: {fileID: 8300000, guid: ed64c0e299cf81e4ba4228d6c65ce46e, type: 3}
   MissingAudio: {fileID: 8300000, guid: 128eba63f6457ff41a65fbae1979778e, type: 3}
+--- !u!114 &2080602744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080602740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5a2ce0a49fc6a4182071d2abafd137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  errorRateAsset: {fileID: 4900000, guid: a0a02cca3f986a441b754408bd1b2b90, type: 3}

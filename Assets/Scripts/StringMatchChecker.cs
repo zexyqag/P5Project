@@ -28,12 +28,14 @@ public class StringMatchChecker : MonoBehaviour {
 	}
 
 	public void checkCharacterForMatch(char c) {
-		if(stringToMatch[currentStringElement].Equals(c)) {
-			++currentStringElement;
-			EventSystem.onTypedCorrect(isRaycastScene);
-		} else {
-			onCharacterError.Invoke();
-			EventSystem.onTypedError(isRaycastScene);
+		if(stringToMatch.Length < currentStringElement) {
+			if(stringToMatch[currentStringElement].Equals(c)) {
+				++currentStringElement;
+				EventSystem.onTypedCorrect(isRaycastScene);
+			} else {
+				onCharacterError.Invoke();
+				EventSystem.onTypedError(isRaycastScene);
+			}
 		}
 	}
 }
