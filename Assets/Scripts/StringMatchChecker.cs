@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class StringMatchChecker : MonoBehaviour {
 	public UnityEvent onStringMatch, onCharacterError;
-	private string stringToMatch;
+	private string stringToMatch = "";
 	private int currentStringElement = 0;
 	[SerializeField] private bool isRaycastScene;
 
