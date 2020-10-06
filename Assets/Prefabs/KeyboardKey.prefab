@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 755700830162755956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: KeyboardKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 755700830277797987}
   - component: {fileID: 755700830277797985}
   - component: {fileID: 755700830277797986}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LetterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 48803781608853268}
   - component: {fileID: 3592411177958934880}
   - component: {fileID: 8039762589039275766}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,10 +238,10 @@ MonoBehaviour:
   Letter: 81
   LetterText: {fileID: 755700830277797988}
   MatHower: {fileID: 2100000, guid: 9e995e61de69d8647ae2b2d65eceab3f, type: 2}
-  MatDefoult: {fileID: 2100000, guid: 07bcd4e0597eb0648b7a45624f2e0594, type: 2}
+  MatDefault: {fileID: 2100000, guid: 9b01d7c0e4dfa854eb5dfe2624e27c0f, type: 2}
   MatPress: {fileID: 2100000, guid: 70c66109a93f33a4ead799f58a6b9ef5, type: 2}
   PosDefoult: {x: 0, y: 0, z: 0}
-  PosHower: {x: 0, y: 0, z: 0.03}
-  PosPress: {x: 0, y: 0, z: -0.03}
+  PosHower: {x: 0, y: 0, z: -0.03}
+  PosPress: {x: 0, y: 0, z: 0.03}
   isPressDown: 0
   audioPlayer: {fileID: 0}

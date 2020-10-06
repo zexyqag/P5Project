@@ -95,7 +95,7 @@ public class ButtonBehavior : MonoBehaviour
 
     void MoveButton(Vector3 newPos)
     {
-        this.transform.position = newPos;
+        this.transform.parent.position = newPos;
     }
 
 }
