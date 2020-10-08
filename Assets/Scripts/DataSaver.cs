@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DataSaver : MonoBehaviour {
 	private int TotalErrorRaycast = 0, TotalErrorHeadHand = 0, TotalPhrasesLengthRaycast = 0, TotalPhrasesLengthHeadHand = 0;
-	[SerializeField] private TextAsset errorRateAsset;
+	[SerializeField] private TextAsset errorRateAsset = null;
 
 
 	private void Awake() {

@@ -313,8 +313,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4116726328875447526}
   - component: {fileID: 2071036002995039213}
-  - component: {fileID: 3814042368593558240}
-  - component: {fileID: 621314183256824227}
+  - component: {fileID: 7029360856038902075}
+  - component: {fileID: 7587264826585904750}
   m_Layer: 0
   m_Name: Writeing Area
   m_TagString: Untagged
@@ -433,20 +433,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3814042368593558240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4116726328875447525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c572f00e2472824b843caf68f0403ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioToPlay: 0
---- !u!114 &621314183256824227
+--- !u!114 &7029360856038902075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -459,3 +446,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioToPlay: 1
+--- !u!114 &7587264826585904750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4116726328875447525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1756ba48a1c89904fb1b4890a7ae97b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStringMatch:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7029360856038902075}
+        m_TargetAssemblyTypeName: AudioPlayer, Assembly-CSharp
+        m_MethodName: playAudio
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCharacterError:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7029360856038902075}
+        m_TargetAssemblyTypeName: AudioPlayer, Assembly-CSharp
+        m_MethodName: playAudio
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isRaycastScene: 0

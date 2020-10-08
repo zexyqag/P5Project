@@ -9,7 +9,7 @@ public class StringListFromFileHandler : MonoBehaviour {
 	private List<string> phrasesToWriteStringList = new List<string>();
 	private int phraseIndex = 0;
 	public string currentString { get; private set; }
-	[SerializeField] private TextAsset phrasesToWriteAsset;
+	[SerializeField] private TextAsset phrasesToWriteAsset = null;
 	private Text textField;
 
 	private void Awake() {
@@ -22,7 +22,7 @@ public class StringListFromFileHandler : MonoBehaviour {
 				}
 			}
 		} else {
-			Debug.Log("Not text file assigned to: " + this + " on " + gameObject.name);
+			Debug.LogError("Not text file assigned to: " + this + " on " + gameObject.name);
 			phrasesToWriteStringList = new List<string> { "No text file assigned", "You forgot to assgin a text file", "Missing text file", "Text file be gone" };
 		}
 	}

@@ -8,7 +8,7 @@ public class StringMatchChecker : MonoBehaviour {
 	public UnityEvent onStringMatch, onCharacterError;
 	private string stringToMatch = "";
 	private int currentStringElement = 0;
-	[SerializeField] private bool isRaycastScene;
+	[SerializeField] private bool isRaycastScene = false;
 
 	private void Awake() {
 		EventSystem.onButtonPressed += checkCharacterForMatch;
@@ -17,18 +17,19 @@ public class StringMatchChecker : MonoBehaviour {
 	}
 
 	private void updateStringToMatch(string s) {
-		stringToMatch = s;
+		stringToMatch = s.ToUpper();
 	}
 
 	public void checkStringForMatch(string s) {
 		if(stringToMatch.Equals(s)) {
+			EventSystem.onClearKeyboard();
 			EventSystem.onNextString();
 			onStringMatch.Invoke();
 		}
 	}
 
 	public void checkCharacterForMatch(char c) {
-		if(stringToMatch.Length < currentStringElement) {
+		if(stringToMatch.Length > currentStringElement) {
 			if(stringToMatch[currentStringElement].Equals(c)) {
 				++currentStringElement;
 				EventSystem.onTypedCorrect(isRaycastScene);
@@ -37,5 +38,15 @@ public class StringMatchChecker : MonoBehaviour {
 				EventSystem.onTypedError(isRaycastScene);
 			}
 		}
+	}
+
+	[ContextMenu("invokeOnStringMatch")]
+	public void invokeOnStringMatch() {
+		onStringMatch.Invoke();
+	}
+
+	[ContextMenu("invokeonCharacterError")]
+	public void invokeonCharacterError() {
+		onCharacterError.Invoke();
 	}
 }

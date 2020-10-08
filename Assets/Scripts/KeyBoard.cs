@@ -18,12 +18,13 @@ public class KeyBoard : MonoBehaviour {
 	void AddText(char letterToAdd) {
 
 		textField.text = textField.text.Substring(0, textField.text.Length - 1);
-		Debug.Log("Check addletter");
+		//Debug.Log("Check addletter");
 		textField.text += letterToAdd;
 		EventSystem.onValidateSentence(textField.text);
 		textField.text += "|";
 	}
 
+	[ContextMenu("Backspace")]
 	void Backspace() {
 		if(textField.text.Length >= 2) {
 			textField.text = textField.text.Substring(0, textField.text.Length - 2) + "|";
