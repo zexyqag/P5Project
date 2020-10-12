@@ -14,8 +14,8 @@ public class ButtonBehavior : MonoBehaviour
     public Material MatPress;
 
     public Vector3 PosDefoult;
-    public Vector3 PosHower;
-    public Vector3 PosPress;
+    private Vector3 PosHower;
+    private Vector3 PosPress;
 
     public bool isPressDown;
 
@@ -37,8 +37,8 @@ public class ButtonBehavior : MonoBehaviour
     private void setPositions()
     {
         PosDefoult = this.transform.position;
-        PosHower = PosHower + PosDefoult;
-        PosPress = PosPress + PosDefoult;
+        PosHower = PosDefoult + new Vector3(0,0, -0.03f);
+        PosPress = PosDefoult + new Vector3(0, 0, 0.03f);
     }
 
     public void OnButtonDown()
