@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
             {
 				go.layer = 0;
 
-				if (go.tag != "Buttons")
+				if (go.tag != "Button")
 				{
 					go.layer = 0;
 				}

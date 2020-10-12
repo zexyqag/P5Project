@@ -36,7 +36,7 @@ public class ButtonBehavior : MonoBehaviour
 
     private void setPositions()
     {
-        PosDefoult = this.transform.position;
+        PosDefoult = this.transform.parent.localPosition;
         PosHower = PosDefoult + new Vector3(0,0, -0.03f);
         PosPress = PosDefoult + new Vector3(0, 0, 0.03f);
     }
@@ -101,7 +101,7 @@ public class ButtonBehavior : MonoBehaviour
     void MoveButton(Vector3 newPos)
     {
         
-        this.transform.parent.position = newPos;
+        this.transform.parent.localPosition = newPos;
     }
 
 }

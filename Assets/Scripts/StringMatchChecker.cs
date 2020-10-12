@@ -14,6 +14,7 @@ public class StringMatchChecker : MonoBehaviour {
 		EventSystem.onButtonPressed += checkCharacterForMatch;
 		EventSystem.onValidateSentence += checkStringForMatch;
 		EventSystem.onUpdateStringToMatch += updateStringToMatch;
+		EventSystem.onBackspace += backspace;
 	}
 
 	private void updateStringToMatch(string s) {
@@ -32,12 +33,20 @@ public class StringMatchChecker : MonoBehaviour {
 	public void checkCharacterForMatch(char c) {
 		if(stringToMatch.Length > currentStringElement) {
 			if(stringToMatch[currentStringElement].Equals(c)) {
-				++currentStringElement;
 				EventSystem.onTypedCorrect(isRaycastScene);
 			} else {
 				onCharacterError.Invoke();
 				EventSystem.onTypedError(isRaycastScene);
 			}
+		}
+		++currentStringElement;
+	}
+
+	
+
+	void backspace() {
+		if(currentStringElement > 0) {
+			--currentStringElement;
 		}
 	}
 
