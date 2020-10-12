@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	public UnityEvent onStart;
 
 	private void Start() {
-		setAllToDefault();
+		//setAllToDefault();
 
 		if (PlayerPrefab == null) {
 			Debug.Log("Missing PlayerPrefab");
