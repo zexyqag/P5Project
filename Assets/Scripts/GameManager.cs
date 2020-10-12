@@ -43,8 +43,16 @@ public class GameManager : MonoBehaviour {
 			if(go.layer != 8 || go.layer != 9 || go.layer != 10)
             {
 				go.layer = 0;
-            }
-        }
+
+				if (go.tag != "Buttons")
+				{
+					go.layer = 0;
+				}
+			}
+
+			
+
+		}
 
 	}
 
