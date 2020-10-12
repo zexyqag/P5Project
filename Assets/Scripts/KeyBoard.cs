@@ -36,7 +36,7 @@ public class KeyBoard : MonoBehaviour {
 	}
 
 	private void deleteKeyboardText() {
-		textField.text = "|";
+		textField.text = "";
 	}
 
 	IEnumerator WaitforTime(float timeToWait) {

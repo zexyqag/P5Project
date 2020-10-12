@@ -570,30 +570,6 @@ PrefabInstance:
       propertyPath: audioToPlay
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7587264826585904750, guid: 6e71c1451244dec4c945eeca06c1b496, type: 3}
-      propertyPath: onStringMatch.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playAudio
-      objectReference: {fileID: 0}
-    - target: {fileID: 7587264826585904750, guid: 6e71c1451244dec4c945eeca06c1b496, type: 3}
-      propertyPath: onCharacterError.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1050649357}
-    - target: {fileID: 7587264826585904750, guid: 6e71c1451244dec4c945eeca06c1b496, type: 3}
-      propertyPath: onCharacterError.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playAudio
-      objectReference: {fileID: 0}
-    - target: {fileID: 7587264826585904750, guid: 6e71c1451244dec4c945eeca06c1b496, type: 3}
-      propertyPath: onStringMatch.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7587264826585904750, guid: 6e71c1451244dec4c945eeca06c1b496, type: 3}
-      propertyPath: onCharacterError.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7587264826585904750, guid: 6e71c1451244dec4c945eeca06c1b496, type: 3}
-      propertyPath: onStringMatch.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1050649357}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e71c1451244dec4c945eeca06c1b496, type: 3}
 --- !u!4 &1050649352 stripped
@@ -619,17 +595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phrasesToWriteAsset: {fileID: 4900000, guid: f8ffd8f3cdacc474386f59a9b20374a6, type: 3}
---- !u!114 &1050649357 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7029360856038902075, guid: 6e71c1451244dec4c945eeca06c1b496, type: 3}
-  m_PrefabInstance: {fileID: 1050649351}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c572f00e2472824b843caf68f0403ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!850595691 &1070520438
 LightingSettings:
   m_ObjectHideFlags: 0
