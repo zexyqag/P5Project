@@ -29,7 +29,7 @@ public class ButtonBehavior : MonoBehaviour
     {
         LetterText.GetComponent<TextMesh>().text = Letter.ToString();
         ChangeMaterial(MatDefault);
-
+        EventSystem.onSetPos += setPositions;
         setPositions();
         isPressDown = false;
     }

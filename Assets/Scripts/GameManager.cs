@@ -27,6 +27,12 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	[ContextMenu("set the positions of all buttons")]
+	private void setAllPositionsOfButtons()
+    {
+		EventSystem.onSetPos();
+    }
+
 	public void LoadScene(SceneAsset sceneAsset) {
 		LoadScene(sceneAsset.name);
 	}
