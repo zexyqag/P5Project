@@ -24,6 +24,7 @@ public class StringMatchChecker : MonoBehaviour {
 		if(stringToMatch.Equals(s)) {
 			EventSystem.onClearKeyboard();
 			EventSystem.onNextString();
+			currentStringElement = 0;
 			onStringMatch.Invoke();
 		}
 	}
