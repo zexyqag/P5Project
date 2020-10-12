@@ -30,10 +30,15 @@ public class ButtonBehavior : MonoBehaviour
         LetterText.GetComponent<TextMesh>().text = Letter.ToString();
         ChangeMaterial(MatDefault);
 
+        setPositions();
+        isPressDown = false;
+    }
+
+    private void setPositions()
+    {
         PosDefoult = this.transform.position;
         PosHower = PosHower + PosDefoult;
         PosPress = PosPress + PosDefoult;
-        isPressDown = false;
     }
 
     public void OnButtonDown()
@@ -44,6 +49,7 @@ public class ButtonBehavior : MonoBehaviour
             EventSystem.onButtonPressed(Letter);
         }
         audioPlayer.playAudio();
+        setPositions();
         MoveButton(PosPress);
         ChangeMaterial(MatPress);
         isPressDown = true;
@@ -70,6 +76,7 @@ public class ButtonBehavior : MonoBehaviour
         if (!isHover && !isPressDown)
         {
             ChangeMaterial(MatHower);
+            setPositions();
             MoveButton(PosHower);
         }
         isHover = true;
@@ -95,6 +102,7 @@ public class ButtonBehavior : MonoBehaviour
 
     void MoveButton(Vector3 newPos)
     {
+        
         this.transform.parent.position = newPos;
     }
 
