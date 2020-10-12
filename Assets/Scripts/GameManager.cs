@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour {
 	public UnityEvent onStart;
 
 	private void Start() {
-		if(PlayerPrefab == null) {
+		setAllToDefault();
+
+		if (PlayerPrefab == null) {
 			Debug.Log("Missing PlayerPrefab");
 		} else if(Player.instance == null) {
 			Instantiate(PlayerPrefab);
@@ -32,6 +34,19 @@ public class GameManager : MonoBehaviour {
     {
 		EventSystem.onSetPos();
     }
+
+	private void setAllToDefault()
+    {
+		GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+		foreach (GameObject go in allObjects)
+        {
+			if(go.layer != 8 || go.layer != 9 || go.layer != 10)
+            {
+				go.layer = 0;
+            }
+        }
+
+	}
 
 	public void LoadScene(SceneAsset sceneAsset) {
 		LoadScene(sceneAsset.name);
