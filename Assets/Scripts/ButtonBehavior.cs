@@ -49,7 +49,6 @@ public class ButtonBehavior : MonoBehaviour
             EventSystem.onButtonPressed(Letter);
         }
         audioPlayer.playAudio();
-        setPositions();
         MoveButton(PosPress);
         ChangeMaterial(MatPress);
         isPressDown = true;
@@ -76,7 +75,6 @@ public class ButtonBehavior : MonoBehaviour
         if (!isHover && !isPressDown)
         {
             ChangeMaterial(MatHower);
-            setPositions();
             MoveButton(PosHower);
         }
         isHover = true;
