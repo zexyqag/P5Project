@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 168303053182981836}
   m_Layer: 0
-  m_Name: Keyboard and Writeing Area
+  m_Name: Keyboard and Writeing Area HeadHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,21 +52,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 168303053182981836}
     m_Modifications:
+    - target: {fileID: 3132653176378389574, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7308753955027217218, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
       propertyPath: m_Name
       value: Keyboard
       objectReference: {fileID: 0}
     - target: {fileID: 7308753955027217219, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0815927
+      value: -0.429
       objectReference: {fileID: 0}
     - target: {fileID: 7308753955027217219, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.361
+      value: 0.424
       objectReference: {fileID: 0}
     - target: {fileID: 7308753955027217219, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.405
+      value: 0.548
       objectReference: {fileID: 0}
     - target: {fileID: 7308753955027217219, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -99,18 +103,6 @@ PrefabInstance:
     - target: {fileID: 7308753955027217219, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7308753955027217219, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7308753955027217219, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7308753955027217219, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e357770a90799bf4d8d6809969a0055b, type: 3}
