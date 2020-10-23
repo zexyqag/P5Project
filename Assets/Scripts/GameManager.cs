@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -8,74 +9,66 @@ using Valve.VR.InteractionSystem;
 
 public class GameManager : MonoBehaviour {
 
-	public List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>();
-	public Transform PlayerPrefab;
+	public gameSettingsScriptableObject gameSettings;
+	public Transform Player;
+	public bool isCurrentTestHeadHand = false;
+	public int currentTestNumber = 0;
+	static public GameManager Instance { get; private set; }
 
-	public UnityEvent onStart;
-
-	private void Start() {
-		//setAllToDefault();
-
-		if (PlayerPrefab == null) {
-			Debug.Log("Missing PlayerPrefab");
-		} else if(Player.instance == null) {
-			Instantiate(PlayerPrefab);
+	private void Awake() {
+		if(!Instance) {
+			Instance = this;
+		} else {
+			Destroy(gameObject);
 		}
-		foreach(EditorBuildSettingsScene scene in EditorBuildSettings.scenes) {
-			if(scene.enabled)
-				scenes.Add(scene);
-		}
-		onStart.Invoke();
 
+		if(!gameSettings) {
+			Debug.Log("No game settings assinged, yeeting " + gameObject.name);
+			Destroy(gameObject);
+			return;
+		}
+
+		Player = Instantiate(gameSettings.ShouldStartWithHeadHand ? gameSettings.HeadHandPlayer : gameSettings.HandPlayer);
+		isCurrentTestHeadHand = gameSettings.ShouldStartWithHeadHand;
+		SceneLoader.LoadScene(gameSettings.AdjustmentScene);
 	}
 
-	[ContextMenu("set the positions of all buttons")]
-	private void setAllPositionsOfButtons()
-    {
-		EventSystem.onSetPos();
-    }
+	private void OnEnable() {
+		SceneManager.sceneLoaded += OnSceneLoaded;
+	}
 
-	private void setAllToDefault()
-    {
-		GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
-		foreach (GameObject go in allObjects)
-        {
-			if(go.layer != 8 || go.layer != 9 || go.layer != 10)
-            {
+	private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+	}
+
+	public void LoadAdjustmentScene() {
+		if(currentTestNumber > gameSettings.testAmountPerScene * 2)
+			Application.Quit();
+
+		Destroy(Player);
+		isCurrentTestHeadHand = !isCurrentTestHeadHand;
+		SceneLoader.LoadScene(gameSettings.AdjustmentScene);
+		Player = Instantiate(!isCurrentTestHeadHand ? gameSettings.HeadHandPlayer : gameSettings.HandPlayer);
+	}
+
+	public void LoadNextTest() {
+		SceneLoader.LoadScene(gameSettings.TestingScene);
+	}
+
+	private void setAllToDefault() {
+		GameObject[] allObjects = FindObjectsOfType<GameObject>();
+		foreach(GameObject go in allObjects) {
+			if(go.layer != 8 || go.layer != 9 || go.layer != 10) {
 				go.layer = 0;
 
-				if (go.tag != "Button")
-				{
+				if(go.tag != "Button") {
 					go.layer = 0;
 				}
 			}
-
-			
-
-		}
-
-	}
-
-	public void LoadScene(SceneAsset sceneAsset) {
-		LoadScene(sceneAsset.name);
-	}
-
-	public void LoadScene(string sceneNameOrPath) {
-		int index = scenes.IndexOf((from s in scenes
-									where s.path.Contains(sceneNameOrPath)
-									select s).FirstOrDefault());
-		if(index == -1) {
-			Debug.Log("Could not find a scene with path or name: " + sceneNameOrPath.ToString());
-		} else {
-			LoadScene(index);
 		}
 	}
 
-	public void LoadScene(int sceneIdx) {
-		if(sceneIdx < 0 || sceneIdx >= scenes.Count) {
-			Debug.Log("Could not find a scene with scene index: " + sceneIdx.ToString());
-		} else {
-			SceneManager.LoadSceneAsync(sceneIdx);
-		}
+
+	private void OnDisable() {
+		SceneManager.sceneLoaded -= OnSceneLoaded;
 	}
 }
