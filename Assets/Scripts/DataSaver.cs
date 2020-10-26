@@ -73,13 +73,8 @@ public class DataSaver : MonoBehaviour {
 
 	[ContextMenu("WriteToFile")]
 	public void WriteToFile() {
-		if(!errorRateAsset) {
-			Debug.Log("TextAsset missing on: " + this);
-			return;
-		}
-
-		string path = AssetDatabase.GetAssetPath(errorRateAsset);
-		StreamWriter writer = new StreamWriter(path, true);
+		string path = Application.persistentDataPath + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+		StreamWriter writer = File.CreateText(path);
 		writer.WriteLine(TotalErrorRaycast.ToString()
 						+ ";" + TotalPhrasesLengthRaycast.ToString()
 						+ ";" + TotalErrorHeadHand.ToString()

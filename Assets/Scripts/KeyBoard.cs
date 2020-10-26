@@ -30,12 +30,12 @@ public class KeyBoard : MonoBehaviour {
 
     void changeCorrectMaterial()
     {
-        textField.color = corretColer;
+        //textField.color = corretColer;
     }
 
     void changeWrongMaterial(bool notInUse)
     {
-        textField.color = wrongColor;
+        //textField.color = wrongColor;
     }
 
     [ContextMenu("Backspace")]
