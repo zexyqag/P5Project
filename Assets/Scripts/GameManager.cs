@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
 	[ContextMenu("switch imput type")]
 	public void switchInputType()
     {
-		Destroy(currentPlayerVariant);
+		Destroy(currentPlayerVariant.gameObject);
 		currentPlayerVariant = Instantiate(PlayerVariants[1]);
 	}
 	/*
