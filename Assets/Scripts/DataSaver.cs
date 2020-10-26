@@ -1,90 +1,66 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class DataSaver : MonoBehaviour {
-	private int TotalErrorRaycast = 0, TotalErrorHeadHand = 0, TotalPhrasesLengthRaycast = 0, TotalPhrasesLengthHeadHand = 0, stringCount = 0;
-	[SerializeField] private TextAsset errorRateAsset = null;
-
-    List<string> LettersAndTimecode = new List<string>();
-    
-    private float timeSpendt = 0, finalTime = 0;
-	private bool isTimeGoing = false;
+	private int TotalError = 0, TotalPhrasesLength = 0;
+	private string filePath = string.Empty, testName = string.Empty;
+	private StreamWriter writer = null;
 
 	private void Awake() {
 		EventSystem.onTypedCorrect += addTotalPhrasesLength;
 		EventSystem.onTypedError += addTotalError;
-		EventSystem.onSaveData += WriteToFile;
-		EventSystem.onNextString += upStringCount;
-		EventSystem.onButtonPressed += firstButtonPress;
-        EventSystem.onButtonPressed += addLettersToDictionary;
-        EventSystem.onBackspace += backspace;
+		EventSystem.onButtonPressed += addButtonPressed;
+		EventSystem.onBackspace += addBackspace;
+		filePath = Application.persistentDataPath + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ".csv";
 	}
 
-	void Update() {
-		if(isTimeGoing)
-			timeSpendt += Time.deltaTime;
-
-		if(stringCount == 10) {
-            EventSystem.onSaveData();
-			isTimeGoing = false;
-			EditorApplication.isPaused = true;
-		}
+	private void Start() {
+		writer = File.CreateText(filePath);
 	}
 
-    void backspace()
-    {
-        LettersAndTimecode.Add(DateTime.Now.ToString() + " " + "BACKSPACE");
-    }
+	public void addTotalError() {
+		++TotalError;
+	}
 
-    void addLettersToDictionary(char letter)
-    {
-            LettersAndTimecode.Add( DateTime.Now.ToString() + " " + letter.ToString());
-    }
+	public void addTotalPhrasesLength() {
+		++TotalPhrasesLength;
+	}
 
-	public void addTotalError(bool isRaycastSecene) {
-		if(isRaycastSecene) {
-			++TotalErrorRaycast;
+	private void addButtonPressed(char c) {
+		logAction(c.ToString());
+	}
+
+	void addBackspace() {
+		logAction("BACKSPACE");
+	}
+
+	private void startTest(string testName) {
+		this.testName = testName;
+		TotalError = 0;
+		TotalPhrasesLength = 0;
+		logAction("Test: " + testName + " start");
+	}
+
+	private void endTest() {
+		logAction("Test: " + testName + " end" + ";" + TotalError.ToString() + ";" + TotalPhrasesLength.ToString());
+	}
+
+	private void logAction(string action) {
+		if(writer.BaseStream != null) {
+			writer.WriteLine(testName + ";" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ";" + action);
 		} else {
-			++TotalErrorHeadHand;
+			Debug.Log("StreamWriter is closed");
 		}
 	}
 
-	public void addTotalPhrasesLength(bool isRaycastSecene) {
-		if(isRaycastSecene) {
-			++TotalPhrasesLengthRaycast;
-		} else {
-			++TotalPhrasesLengthHeadHand;
+	private void OnApplicationQuit() => closeWriter();
+	private void OnDisable() => closeWriter();
+	private void OnDestroy() => closeWriter();
+	private void closeWriter() {
+		if(writer.BaseStream != null) {
+			Debug.Log("file saved to: " + filePath.ToString());
+			writer.Close();
 		}
-	}
-
-	private void firstButtonPress(char obj) {
-		if(!isTimeGoing)
-			isTimeGoing = true;
-	}
-
-	void upStringCount() {
-		++stringCount;
-	}
-
-	[ContextMenu("WriteToFile")]
-	public void WriteToFile() {
-		string path = Application.persistentDataPath + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-		StreamWriter writer = File.CreateText(path);
-		writer.WriteLine(TotalErrorRaycast.ToString()
-						+ ";" + TotalPhrasesLengthRaycast.ToString()
-						+ ";" + TotalErrorHeadHand.ToString()
-						+ ";" + TotalPhrasesLengthHeadHand.ToString());
-
-        foreach (string letterTimePair in LettersAndTimecode)
-        {
-            writer.WriteLine(letterTimePair);
-        }
-		writer.Close();
-		AssetDatabase.ImportAsset(path);
 	}
 }

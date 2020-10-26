@@ -33,7 +33,7 @@ public class KeyBoard : MonoBehaviour {
         //textField.color = corretColer;
     }
 
-    void changeWrongMaterial(bool notInUse)
+    void changeWrongMaterial()
     {
         //textField.color = wrongColor;
     }
