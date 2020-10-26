@@ -11,7 +11,7 @@ public class KeyboardPlacer : MonoBehaviour {
 	public Transform keyboard;
 
 	private void Start() {
-		Debug.Log("spaceing");
+		//Debug.Log("spaceing");
 		Spacing = Spacing / 1000;
 		Size = Size / 1000;
 		Scale();
@@ -42,7 +42,7 @@ public class KeyboardPlacer : MonoBehaviour {
 		for(int i = 0; i < 9; i++) // middle row
 		{
 			Vector3 newPos = new Vector3(startPosition.x + ((Spacing + Size) * i) + 0.05f, startPosition.y - (Spacing + Size), startPosition.z);
-			Debug.Log(newPos);
+			//Debug.Log(newPos);
 			keys[i + 10].transform.localPosition = newPos;
 		}
 

@@ -9,23 +9,21 @@ using Valve.VR.InteractionSystem;
 public class GameManager : MonoBehaviour {
 
 	public List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>();
-	public Transform PlayerPrefab;
+	private Transform currentPlayerVariant;
 
 	public UnityEvent onStart;
 
+	public List<Transform> PlayerVariants;
+
+	[ContextMenu("start")]
 	private void Start() {
 		//setAllToDefault();
-
-		if (PlayerPrefab == null) {
-			Debug.Log("Missing PlayerPrefab");
-		} else if(Player.instance == null) {
-			Instantiate(PlayerPrefab);
-		}
-		foreach(EditorBuildSettingsScene scene in EditorBuildSettings.scenes) {
-			if(scene.enabled)
-				scenes.Add(scene);
-		}
+		Debug.Log("gm.start");
+		PlayerVariants.Shuffle();
+		currentPlayerVariant = Instantiate(PlayerVariants[0]);
 		onStart.Invoke();
+
+
 
 	}
 
@@ -56,6 +54,13 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	[ContextMenu("switch imput type")]
+	public void switchInputType()
+    {
+		Destroy(currentPlayerVariant);
+		currentPlayerVariant = Instantiate(PlayerVariants[1]);
+	}
+	/*
 	public void LoadScene(SceneAsset sceneAsset) {
 		LoadScene(sceneAsset.name);
 	}
@@ -78,4 +83,5 @@ public class GameManager : MonoBehaviour {
 			SceneManager.LoadSceneAsync(sceneIdx);
 		}
 	}
+	*/
 }
