@@ -9,7 +9,10 @@ using UnityEngine.PlayerLoop;
 public class DataSaver : MonoBehaviour {
 	private int TotalErrorRaycast = 0, TotalErrorHeadHand = 0, TotalPhrasesLengthRaycast = 0, TotalPhrasesLengthHeadHand = 0, stringCount = 0;
 	[SerializeField] private TextAsset errorRateAsset = null;
-	private float timeSpendt = 0, finalTime = 0;
+
+    List<string> LettersAndTimecode = new List<string>();
+    
+    private float timeSpendt = 0, finalTime = 0;
 	private bool isTimeGoing = false;
 
 	private void Awake() {
@@ -18,6 +21,8 @@ public class DataSaver : MonoBehaviour {
 		EventSystem.onSaveData += WriteToFile;
 		EventSystem.onNextString += upStringCount;
 		EventSystem.onButtonPressed += firstButtonPress;
+        EventSystem.onButtonPressed += addLettersToDictionary;
+        EventSystem.onBackspace += backspace;
 	}
 
 	void Update() {
@@ -25,10 +30,21 @@ public class DataSaver : MonoBehaviour {
 			timeSpendt += Time.deltaTime;
 
 		if(stringCount == 10) {
+            EventSystem.onSaveData();
 			isTimeGoing = false;
 			EditorApplication.isPaused = true;
 		}
 	}
+
+    void backspace()
+    {
+        LettersAndTimecode.Add(DateTime.Now.ToString() + " " + "BACKSPACE");
+    }
+
+    void addLettersToDictionary(char letter)
+    {
+            LettersAndTimecode.Add( DateTime.Now.ToString() + " " + letter.ToString());
+    }
 
 	public void addTotalError(bool isRaycastSecene) {
 		if(isRaycastSecene) {
@@ -64,11 +80,15 @@ public class DataSaver : MonoBehaviour {
 
 		string path = AssetDatabase.GetAssetPath(errorRateAsset);
 		StreamWriter writer = new StreamWriter(path, true);
-		writer.WriteLine(System.DateTime.Now.ToString()
-						+ ";" + TotalErrorRaycast.ToString()
+		writer.WriteLine(TotalErrorRaycast.ToString()
 						+ ";" + TotalPhrasesLengthRaycast.ToString()
 						+ ";" + TotalErrorHeadHand.ToString()
 						+ ";" + TotalPhrasesLengthHeadHand.ToString());
+
+        foreach (string letterTimePair in LettersAndTimecode)
+        {
+            writer.WriteLine(letterTimePair);
+        }
 		writer.Close();
 		AssetDatabase.ImportAsset(path);
 	}

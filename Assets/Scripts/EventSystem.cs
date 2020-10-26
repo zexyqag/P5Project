@@ -8,5 +8,5 @@ public static class EventSystem {
 	public static Action<char> onButtonPressed;
 	public static Action<string> onValidateSentence, onUpdateStringToMatch;
 	public static Action<bool> onTypedError, onTypedCorrect;
-	public static Action onClearKeyboard, onBackspace, onNextString, onSaveData, onSetPos;
+	public static Action onClearKeyboard, onBackspace, onNextString, onSaveData, onSetPos, onChangeColorCorrect;
 }

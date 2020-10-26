@@ -8,6 +8,7 @@ public class StringMatchChecker : MonoBehaviour {
 	public UnityEvent onStringMatch, onCharacterError;
 	private string stringToMatch = "";
 	private int currentStringElement = 0;
+    private int lastCorrectElement;
 	[SerializeField] private bool isRaycastScene = false;
 
 	private void Awake() {
@@ -33,8 +34,10 @@ public class StringMatchChecker : MonoBehaviour {
 	public void checkCharacterForMatch(char c) {
 		if(stringToMatch.Length > currentStringElement) {
 			if(stringToMatch[currentStringElement].Equals(c)) {
+                lastCorrectElement = currentStringElement;
 				EventSystem.onTypedCorrect(isRaycastScene);
-			} else {
+                EventSystem.onChangeColorCorrect();
+            } else {
 				onCharacterError.Invoke();
 				EventSystem.onTypedError(isRaycastScene);
 			}
@@ -47,7 +50,12 @@ public class StringMatchChecker : MonoBehaviour {
 	void backspace() {
 		if(currentStringElement > 0) {
 			--currentStringElement;
-		}
+
+            if (currentStringElement == lastCorrectElement +1)
+            {
+                EventSystem.onChangeColorCorrect();
+            }
+        }
 	}
 
 	[ContextMenu("invokeOnStringMatch")]

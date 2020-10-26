@@ -6,10 +6,15 @@ using System;
 
 public class KeyBoard : MonoBehaviour {
 	private Text textField;
+
+    public Color corretColer = Color.green, wrongColor = Color.red;
+
 	private void Start() {
 		EventSystem.onButtonPressed += AddText;
 		EventSystem.onClearKeyboard += deleteKeyboardText;
-		EventSystem.onBackspace += Backspace;
+        EventSystem.onChangeColorCorrect += changeCorrectMaterial;
+        EventSystem.onTypedError += changeWrongMaterial;
+        EventSystem.onBackspace += Backspace;
 		textField = this.GetComponent<UnityEngine.UI.Text>();
 		FlashIndicator();
 
@@ -18,13 +23,22 @@ public class KeyBoard : MonoBehaviour {
 	void AddText(char letterToAdd) {
 
 		textField.text = textField.text.Substring(0, textField.text.Length - 1);
-		//Debug.Log("Check addletter");
 		textField.text += letterToAdd;
 		EventSystem.onValidateSentence(textField.text);
 		textField.text += "|";
 	}
 
-	[ContextMenu("Backspace")]
+    void changeCorrectMaterial()
+    {
+        textField.color = corretColer;
+    }
+
+    void changeWrongMaterial(bool notInUse)
+    {
+        textField.color = wrongColor;
+    }
+
+    [ContextMenu("Backspace")]
 	void Backspace() {
 		if(textField.text.Length >= 2) {
 			textField.text = textField.text.Substring(0, textField.text.Length - 2) + "|";
