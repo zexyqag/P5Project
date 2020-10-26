@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class KeyboardPlacer : MonoBehaviour {
 	public List<GameObject> keys;
-	public float Spacing;
 	public float Size;
+	public float Spacing;
 	public GameObject SpaceBar, BackSpace;
 	public Vector3 startPosition;
 	public Transform keyboard;
+
 
 	private void Start() {
 		//Debug.Log("spaceing");
