@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CountDown : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class CountDown : MonoBehaviour
 
         if (isDone)
         {
-			Debug.Log("Load done level");
+			SceneManager.LoadScene(0);
         }
 
 		EventSystem.onClearKeyboard();
