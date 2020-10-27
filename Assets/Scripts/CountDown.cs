@@ -27,6 +27,9 @@ public class CountDown : MonoBehaviour
 		}
 		isTimerOn = false;
 		TimeLeft = ResetTime;
+		EventSystem.onClearKeyboard();
+		EventSystem.onNextString();
 		EventSystem.onSwtichInputMethod();
+		
 	}
 }

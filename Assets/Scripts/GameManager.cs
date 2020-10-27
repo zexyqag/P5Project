@@ -78,4 +78,10 @@ public class GameManager : MonoBehaviour {
 		KP.Spacing = PlayerAndKeyboardVariants[element].Value.y;
 		KP.Place();
 	}
+
+	[ContextMenu("onButtonPressed")]
+	void activateButtonPress()
+    {
+		EventSystem.onButtonPressed('A');
+    }
 }

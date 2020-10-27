@@ -865,6 +865,10 @@ PrefabInstance:
       propertyPath: keyboards.Array.data[1].y
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 4149749370005803617, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
+      propertyPath: TimeLeft
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
 --- !u!1 &2080602740 stripped
