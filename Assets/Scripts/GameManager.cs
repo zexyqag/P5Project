@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour {
 
 	[ContextMenu("start")]
 	private void Start() {
-        //setAllToDefault();
-        for (int i = 0; i < playerVariants.Count; i++)
+
+		EventSystem.onSwtichInputMethod += switchInputType;
+
+		for (int i = 0; i < playerVariants.Count; i++)
 		{
 			PlayerAndKeyboardVariants.Add(new KeyValuePair<Transform, Vector2>(playerVariants[i], keyboards[i]));
 		}
@@ -69,6 +71,7 @@ public class GameManager : MonoBehaviour {
 
 	private void setPlayerAndKeyboardPos(int element)
     {
+		EventSystem.onTestType(PlayerAndKeyboardVariants[element].Key.name);
 		currentPlayerVariant = Instantiate(PlayerAndKeyboardVariants[element].Key);
 		KeyboardPlacer KP = this.GetComponent<KeyboardPlacer>();
 		KP.Size = PlayerAndKeyboardVariants[element].Value.x;
