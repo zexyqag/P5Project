@@ -1957,7 +1957,7 @@ GameObject:
   - component: {fileID: 4317323983540618699}
   - component: {fileID: 4317323983547442375}
   m_Layer: 0
-  m_Name: Player Variant 1
+  m_Name: Player Variant Raycast
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2819,7 +2819,7 @@ MonoBehaviour:
   forSources: 0
   disableAllOtherActionSets: 0
   activateOnStart: 1
-  deactivateOnDestroy: 1
+  deactivateOnDestroy: 0
 --- !u!1 &4317323983540374775
 GameObject:
   m_ObjectHideFlags: 0
