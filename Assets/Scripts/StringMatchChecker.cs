@@ -42,7 +42,8 @@ public class StringMatchChecker : MonoBehaviour {
 			if(stringToMatch[currentStringElement].Equals(c)) {
                 lastCorrectElement = currentStringElement;
 				EventSystem.onTypedCorrect();
-                EventSystem.onChangeColorCorrect();
+
+                //EventSystem.onChangeColorCorrect();
             } else {
 				onCharacterError.Invoke();
 				EventSystem.onTypedError();
