@@ -9,6 +9,7 @@ public class StringMatchChecker : MonoBehaviour {
 	private string stringToMatch = "";
 	private int currentStringElement = 0;
     private int lastCorrectElement;
+	private bool isAnnyLetterIncorrect = false;
 	[SerializeField] private bool isRaycastScene = false;
 
 	private void Awake() {
@@ -40,13 +41,17 @@ public class StringMatchChecker : MonoBehaviour {
 	public void checkCharacterForMatch(char c) {
 		if(stringToMatch.Length > currentStringElement) {
 			if(stringToMatch[currentStringElement].Equals(c)) {
-                lastCorrectElement = currentStringElement;
 				EventSystem.onTypedCorrect();
 
-                //EventSystem.onChangeColorCorrect();
-            } else {
+				if (!isAnnyLetterIncorrect) {
+					lastCorrectElement = currentStringElement;
+					EventSystem.onChangeColorCorrect();
+				}
+
+			} else {
 				onCharacterError.Invoke();
 				EventSystem.onTypedError();
+				isAnnyLetterIncorrect = true;
 			}
 		}
 		++currentStringElement;
@@ -60,6 +65,7 @@ public class StringMatchChecker : MonoBehaviour {
 
             if (currentStringElement == lastCorrectElement +1)
             {
+				isAnnyLetterIncorrect = false;
                 EventSystem.onChangeColorCorrect();
             }
         }
