@@ -30,15 +30,16 @@ public class CountDown : MonoBehaviour
 		isTimerOn = false;
 		TimeLeft = ResetTime;
 
-        if (isDone)
-        {
-			SceneManager.LoadScene(0);
-        }
-
 		EventSystem.onClearKeyboard();
 		EventSystem.onNextString();
 		EventSystem.onSwtichInputMethod();
 		EventSystem.onSetPos();
+
+		if (isDone)
+        {
+			SceneManager.LoadScene(0);
+        }
+
 		isDone = true;
 		
 	}

@@ -30,12 +30,12 @@ public class KeyBoard : MonoBehaviour {
 
     void changeCorrectMaterial()
     {
-        //textField.color = corretColer;
+        textField.color = corretColer;
     }
 
     void changeWrongMaterial()
     {
-        //textField.color = wrongColor;
+        textField.color = wrongColor;
     }
 
     [ContextMenu("Backspace")]
@@ -50,7 +50,7 @@ public class KeyBoard : MonoBehaviour {
 	}
 
 	private void deleteKeyboardText() {
-		textField.text = " ";
+		textField.text = "|";
 	}
 
 	IEnumerator WaitforTime(float timeToWait) {
