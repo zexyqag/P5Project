@@ -55,6 +55,7 @@ public class StringMatchChecker : MonoBehaviour {
 			}
 		}
 		++currentStringElement;
+		Debug.Log(lastCorrectElement);
 	}
 
 	
@@ -68,9 +69,8 @@ public class StringMatchChecker : MonoBehaviour {
 				isAnnyLetterIncorrect = false;
                 EventSystem.onChangeColorCorrect();
             }
-
-			Debug.Log(isAnnyLetterIncorrect);
         }
+		Debug.Log(lastCorrectElement);
 	}
 
 	[ContextMenu("invokeOnStringMatch")]
