@@ -39,7 +39,7 @@ public class DataSaver : MonoBehaviour {
 
 	private void logAction(string action) {
 		if(writer.BaseStream != null) {
-			Debug.Log("Logged: " + action);
+			//Debug.Log("Logged: " + action);
 			writer.WriteLine(testName + ";" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ";" + action);
 		} else {
 			Debug.Log("StreamWriter is closed");
