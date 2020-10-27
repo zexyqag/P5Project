@@ -12,6 +12,8 @@ public class DataSaver : MonoBehaviour {
 		EventSystem.onTypedError += addTotalError;
 		EventSystem.onButtonPressed += addButtonPressed;
 		EventSystem.onBackspace += addBackspace;
+		EventSystem.onTestType += startTest;
+		EventSystem.onSwtichInputMethod += endTest;
 		filePath = Application.persistentDataPath + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ".csv";
 	}
 
@@ -23,7 +25,7 @@ public class DataSaver : MonoBehaviour {
 
 	private void addButtonPressed(char c) => logAction(c.ToString());
 
-	void addBackspace() => logAction("BACKSPACE");
+	private void addBackspace() => logAction("BACKSPACE");
 
 	private void startTest(string testName) {
 		this.testName = testName;
