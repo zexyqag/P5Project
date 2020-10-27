@@ -27,12 +27,17 @@ public class ButtonBehavior : MonoBehaviour
 
     private void Start()
     {
-        LetterText.GetComponent<TextMesh>().text = Letter.ToString();
-        ChangeMaterial(MatDefault);
+        EventSystem.onSetPos += toDefault;
         EventSystem.onSetPos += setPositions;
-        EventSystem.onSwtichInputMethod += ButtonExit;
+        toDefault();
         setPositions();
         isPressDown = false;
+    }
+
+    private void toDefault()
+    {
+        LetterText.GetComponent<TextMesh>().text = Letter.ToString();
+        ChangeMaterial(MatDefault);
     }
 
     private void setPositions()

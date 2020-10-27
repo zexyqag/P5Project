@@ -15,6 +15,7 @@ public class KeyBoard : MonoBehaviour {
         EventSystem.onChangeColorCorrect += changeCorrectMaterial;
         EventSystem.onTypedError += changeWrongMaterial;
         EventSystem.onBackspace += Backspace;
+		EventSystem.onSwtichInputMethod += resetTextField;
 		textField = this.GetComponent<UnityEngine.UI.Text>();
 		FlashIndicator();
 
@@ -50,6 +51,11 @@ public class KeyBoard : MonoBehaviour {
 	}
 
 	private void deleteKeyboardText() {
+		textField.text = "";
+	}
+
+	private void resetTextField()
+	{
 		textField.text = "|";
 	}
 

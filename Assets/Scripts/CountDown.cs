@@ -30,9 +30,9 @@ public class CountDown : MonoBehaviour
 		isTimerOn = false;
 		TimeLeft = ResetTime;
 
-		EventSystem.onClearKeyboard();
-		EventSystem.onNextString();
+		
 		EventSystem.onSwtichInputMethod();
+		EventSystem.onNextString();
 		EventSystem.onSetPos();
 
 		if (isDone)

@@ -14,12 +14,18 @@ public class StringMatchChecker : MonoBehaviour {
 	private void Awake() {
 		EventSystem.onButtonPressed += checkCharacterForMatch;
 		EventSystem.onValidateSentence += checkStringForMatch;
+		EventSystem.onSwtichInputMethod += toDefault;
 		EventSystem.onUpdateStringToMatch += updateStringToMatch;
 		EventSystem.onBackspace += backspace;
 	}
 
 	private void updateStringToMatch(string s) {
 		stringToMatch = s.ToUpper();
+	}
+
+	private void toDefault()
+    {
+		currentStringElement = 0;
 	}
 
 	public void checkStringForMatch(string s) {
