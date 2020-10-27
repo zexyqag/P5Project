@@ -43,7 +43,7 @@ public class StringMatchChecker : MonoBehaviour {
 			if(stringToMatch[currentStringElement].Equals(c)) {
 				EventSystem.onTypedCorrect();
 
-				if (!isAnnyLetterIncorrect) {
+				if (isAnnyLetterIncorrect == false) {
 					lastCorrectElement = currentStringElement;
 					EventSystem.onChangeColorCorrect();
 				}
@@ -68,6 +68,8 @@ public class StringMatchChecker : MonoBehaviour {
 				isAnnyLetterIncorrect = false;
                 EventSystem.onChangeColorCorrect();
             }
+
+			Debug.Log(isAnnyLetterIncorrect);
         }
 	}
 
