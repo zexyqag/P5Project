@@ -25,6 +25,9 @@ public class KeyboardPlacer : MonoBehaviour {
 			gameObject.transform.localScale *= Size;
 		}
 
+		SpaceBar.transform.localScale = new Vector3(1, 1, 1);
+		BackSpace.transform.localScale = new Vector3(1, 1, 1);
+
 		SpaceBar.transform.localScale *= Size;
 		BackSpace.transform.localScale *= Size;
 
