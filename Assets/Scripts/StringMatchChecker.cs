@@ -35,11 +35,11 @@ public class StringMatchChecker : MonoBehaviour {
 		if(stringToMatch.Length > currentStringElement) {
 			if(stringToMatch[currentStringElement].Equals(c)) {
                 lastCorrectElement = currentStringElement;
-				EventSystem.onTypedCorrect(isRaycastScene);
+				EventSystem.onTypedCorrect();
                 EventSystem.onChangeColorCorrect();
             } else {
 				onCharacterError.Invoke();
-				EventSystem.onTypedError(isRaycastScene);
+				EventSystem.onTypedError();
 			}
 		}
 		++currentStringElement;
