@@ -30,6 +30,7 @@ public class CountDown : MonoBehaviour
 		EventSystem.onClearKeyboard();
 		EventSystem.onNextString();
 		EventSystem.onSwtichInputMethod();
+		EventSystem.onSetPos();
 		
 	}
 }
