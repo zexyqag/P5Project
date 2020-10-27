@@ -12,17 +12,16 @@ public class KeyboardPlacer : MonoBehaviour {
 
 
 	private void Start() {
-		//Debug.Log("spaceing");
-		Spacing = Spacing / 1000;
-		Size = Size / 1000;
-		Scale();
-		Place();
-
+		
 	}
 
 	void Scale() {
-		foreach(GameObject gameObject in keys) {
+		Spacing = Spacing / 1000;
+		Size = Size / 1000;
+
+		foreach (GameObject gameObject in keys) {
 			gameObject.SetActive(true);
+			gameObject.transform.localScale = new Vector3(1, 1, 1);
 			gameObject.transform.localScale *= Size;
 		}
 
@@ -33,8 +32,12 @@ public class KeyboardPlacer : MonoBehaviour {
 		BackSpace.SetActive(true);
 	}
 
-	void Place() {
-		for(int i = 0; i < 10; i++) // top row
+	[ContextMenu("place")]
+	public void Place() {
+
+		Scale();
+
+		for (int i = 0; i < 10; i++) // top row
 		{
 			Vector3 newPos = new Vector3(startPosition.x + ((Spacing + Size) * i), startPosition.y, startPosition.z);
 			keys[i].transform.localPosition = newPos;

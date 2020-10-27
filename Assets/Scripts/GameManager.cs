@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour {
 	public UnityEvent onStart;
 
 	public List<Transform> playerVariants;
-	public List<GameObject> keyboards;
-	private List<KeyValuePair<Transform, GameObject>> PlayerAndKeyboardVariants = new List<KeyValuePair<Transform, GameObject>>();
+	public List<Vector2> keyboards;
+	private List<KeyValuePair<Transform, Vector2>> PlayerAndKeyboardVariants = new List<KeyValuePair<Transform, Vector2>>();
 
 	private bool isBothPlayerVerants = false; // bool is true if both player imput types has bin testet
 
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
         //setAllToDefault();
         for (int i = 0; i < playerVariants.Count; i++)
 		{
-			PlayerAndKeyboardVariants.Add(new KeyValuePair<Transform, GameObject>(playerVariants[i], keyboards[i]));
+			PlayerAndKeyboardVariants.Add(new KeyValuePair<Transform, Vector2>(playerVariants[i], keyboards[i]));
 		}
 
 		PlayerAndKeyboardVariants.Shuffle();
@@ -69,7 +69,10 @@ public class GameManager : MonoBehaviour {
 
 	private void setPlayerAndKeyboardPos(int element)
     {
-		
 		currentPlayerVariant = Instantiate(PlayerAndKeyboardVariants[element].Key);
+		KeyboardPlacer KP = this.GetComponent<KeyboardPlacer>();
+		KP.Size = PlayerAndKeyboardVariants[element].Value.x;
+		KP.Spacing = PlayerAndKeyboardVariants[element].Value.y;
+		KP.Place();
 	}
 }
