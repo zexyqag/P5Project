@@ -32,10 +32,10 @@ public class DataSaver : MonoBehaviour {
 		this.testName = testName;
 		TotalError = 0;
 		TotalPhrasesLength = 0;
-		logAction("Test: " + testName + " start");
+		logAction("START");
 	}
 
-	private void endTest() => logAction("Test: " + testName + " end" + ";" + TotalError.ToString() + ";" + TotalPhrasesLength.ToString());
+	private void endTest() => logAction("END" + ";" + TotalError.ToString() + ";" + TotalPhrasesLength.ToString());
 
 	private void logAction(string action) {
 		if(writer.BaseStream != null) {
