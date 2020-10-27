@@ -5,10 +5,18 @@ using UnityEngine.Events;
 public class CountDown : MonoBehaviour
 {
 	public float TimeLeft = 1;
-	public UnityEvent Event;
+	private float RestTime = 0;
+
+	private void Awake() {
+		RestTime = TimeLeft;
+	}
 
 	public void StartCountdown() {
 		StartCoroutine(wait());
+	}
+
+	public void ResetCountDown() {
+		TimeLeft = RestTime;
 	}
 
 	IEnumerator wait() {
@@ -17,6 +25,6 @@ public class CountDown : MonoBehaviour
 			yield return null;
 		}
 
-		Event.Invoke();
+		EventSystem.onSwtichInputMethod();
 	}
 }

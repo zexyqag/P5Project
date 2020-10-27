@@ -15,25 +15,15 @@ public class DataSaver : MonoBehaviour {
 		filePath = Application.persistentDataPath + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ".csv";
 	}
 
-	private void Start() {
-		writer = File.CreateText(filePath);
-	}
+	private void Start() => writer = File.CreateText(filePath);
 
-	public void addTotalError() {
-		++TotalError;
-	}
+	public void addTotalError() => ++TotalError;
 
-	public void addTotalPhrasesLength() {
-		++TotalPhrasesLength;
-	}
+	public void addTotalPhrasesLength() => ++TotalPhrasesLength;
 
-	private void addButtonPressed(char c) {
-		logAction(c.ToString());
-	}
+	private void addButtonPressed(char c) => logAction(c.ToString());
 
-	void addBackspace() {
-		logAction("BACKSPACE");
-	}
+	void addBackspace() => logAction("BACKSPACE");
 
 	private void startTest(string testName) {
 		this.testName = testName;
@@ -42,9 +32,7 @@ public class DataSaver : MonoBehaviour {
 		logAction("Test: " + testName + " start");
 	}
 
-	private void endTest() {
-		logAction("Test: " + testName + " end" + ";" + TotalError.ToString() + ";" + TotalPhrasesLength.ToString());
-	}
+	private void endTest() => logAction("Test: " + testName + " end" + ";" + TotalError.ToString() + ";" + TotalPhrasesLength.ToString());
 
 	private void logAction(string action) {
 		if(writer.BaseStream != null) {
