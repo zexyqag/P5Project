@@ -5,18 +5,19 @@ using UnityEngine.Events;
 public class CountDown : MonoBehaviour
 {
 	public float TimeLeft = 1;
-	private float RestTime = 0;
+	private float ResetTime = 0;
+	private bool isTimerOn = false;
 
 	private void Awake() {
-		RestTime = TimeLeft;
+		EventSystem.onButtonPressed += StartCountdown;
+		ResetTime = TimeLeft;
 	}
 
-	public void StartCountdown() {
-		StartCoroutine(wait());
-	}
-
-	public void ResetCountDown() {
-		TimeLeft = RestTime;
+	public void StartCountdown(char _) {
+		if(!isTimerOn) {
+			isTimerOn = true;
+			StartCoroutine(wait());
+		}	
 	}
 
 	IEnumerator wait() {
@@ -24,7 +25,8 @@ public class CountDown : MonoBehaviour
 			TimeLeft -= Time.deltaTime;
 			yield return null;
 		}
-
+		isTimerOn = false;
+		TimeLeft = ResetTime;
 		EventSystem.onSwtichInputMethod();
 	}
 }

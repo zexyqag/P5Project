@@ -15,9 +15,10 @@ public class DataSaver : MonoBehaviour {
 		EventSystem.onTestType += startTest;
 		EventSystem.onSwtichInputMethod += endTest;
 		filePath = Application.persistentDataPath + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ".csv";
+		writer = File.CreateText(filePath);
 	}
 
-	private void Start() => writer = File.CreateText(filePath);
+	//private void Start() => 
 
 	public void addTotalError() => ++TotalError;
 
