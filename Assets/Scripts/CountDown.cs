@@ -7,6 +7,7 @@ public class CountDown : MonoBehaviour
 	public float TimeLeft = 1;
 	private float ResetTime = 0;
 	private bool isTimerOn = false;
+	private bool isDone = false;
 
 	private void Awake() {
 		EventSystem.onButtonPressed += StartCountdown;
@@ -27,10 +28,17 @@ public class CountDown : MonoBehaviour
 		}
 		isTimerOn = false;
 		TimeLeft = ResetTime;
+
+        if (isDone)
+        {
+			Debug.Log("Load done level");
+        }
+
 		EventSystem.onClearKeyboard();
 		EventSystem.onNextString();
 		EventSystem.onSwtichInputMethod();
 		EventSystem.onSetPos();
+		isDone = true;
 		
 	}
 }
