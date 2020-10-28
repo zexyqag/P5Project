@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012469850966}
   - component: {fileID: 114000013071118052}
-  - component: {fileID: 2247840104019181680}
   m_Layer: 11
   m_Name: LeftRenderModel Slim
   m_TagString: UpAndDown
@@ -48,17 +47,3 @@ MonoBehaviour:
   displayHandByDefault: 0
   controllerPrefab: {fileID: 1000011460529826, guid: e789c2cc0c98a4c4198a4033fb8ccf96, type: 3}
   displayControllerByDefault: 1
---- !u!136 &2247840104019181680
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000011547835092}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.03
-  m_Height: 0.19
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
