@@ -34,7 +34,7 @@ public class KeyBoard : MonoBehaviour {
         textField.color = corretColer;
     }
 
-    void changeWrongMaterial()
+    void changeWrongMaterial(char _)
     {
         textField.color = wrongColor;
     }

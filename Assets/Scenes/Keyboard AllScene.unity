@@ -589,6 +589,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2080602741, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
+      propertyPath: Miss
+      value: 
+      objectReference: {fileID: 8300000, guid: aa82b144cb440704297e9cf3fb64e6d7, type: 3}
     - target: {fileID: 2080602742, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: keyboard
       value: 
@@ -867,7 +871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4149749370005803617, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: TimeLeft
-      value: 30
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
@@ -891,4 +895,5 @@ MonoBehaviour:
   Correct: {fileID: 8300000, guid: fd0e03f5a96773f459e60444f6a73c23, type: 3}
   Wrong: {fileID: 8300000, guid: 307a28ea3699dc248ab901d0d4a552d2, type: 3}
   KeyboardClick: {fileID: 8300000, guid: ed64c0e299cf81e4ba4228d6c65ce46e, type: 3}
+  Miss: {fileID: 8300000, guid: aa82b144cb440704297e9cf3fb64e6d7, type: 3}
   MissingAudio: {fileID: 8300000, guid: 128eba63f6457ff41a65fbae1979778e, type: 3}

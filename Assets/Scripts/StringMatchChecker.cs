@@ -41,7 +41,7 @@ public class StringMatchChecker : MonoBehaviour {
 	public void checkCharacterForMatch(char c) {
 		if(stringToMatch.Length > currentStringElement) {
 			if(stringToMatch[currentStringElement].Equals(c)) {
-				EventSystem.onTypedCorrect();
+				EventSystem.onTypedCorrect(c);
 
 				if (isAnnyLetterIncorrect == false) {
 					lastCorrectElement = currentStringElement;
@@ -50,7 +50,7 @@ public class StringMatchChecker : MonoBehaviour {
 
 			} else {
 				onCharacterError.Invoke();
-				EventSystem.onTypedError();
+				EventSystem.onTypedError(c);
 				isAnnyLetterIncorrect = true;
 			}
 		}

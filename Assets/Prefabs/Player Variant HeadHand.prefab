@@ -315,13 +315,45 @@ PrefabInstance:
       propertyPath: onPressUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReleaseButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3798153696996639256, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
+      propertyPath: onPressDown.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798153696996639256, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
+      propertyPath: onPressDown.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798153696996639258, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
+      propertyPath: onPressDown.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3798153696996639258, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
       propertyPath: onPressUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReleaseButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3798153696996639258, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
+      propertyPath: onPressDown.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798153696996639258, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
+      propertyPath: onPressDown.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798153696996639258, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
+      propertyPath: onPressDown.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798153696996639258, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
+      propertyPath: onPressDown.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3828273874632944122, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
       propertyPath: deactivateOnDestroy
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014118563522528609, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4114169331365265729, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -347,6 +379,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b2c575ee11247cc4ba27268af4b4e7aa, type: 2}
+    - target: {fileID: 7434608886470938994, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4114169331365265729, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
     - {fileID: 6842593926605885978, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}

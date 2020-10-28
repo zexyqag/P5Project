@@ -8,34 +8,35 @@ public class DataSaver : MonoBehaviour {
 	private StreamWriter writer = null;
 
 	private void Awake() {
-		EventSystem.onTypedCorrect += addTotalPhrasesLength;
+		EventSystem.onTypedCorrect += onTypedCorrect;
 		EventSystem.onTypedError += addTotalError;
-		EventSystem.onButtonPressed += addButtonPressed;
 		EventSystem.onBackspace += addBackspace;
 		EventSystem.onTestType += startTest;
 		EventSystem.onSwtichInputMethod += endTest;
-		filePath = Application.persistentDataPath + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ".csv";
+		filePath = Application.persistentDataPath + Path.DirectorySeparatorChar + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ".csv";
 		writer = File.CreateText(filePath);
 	}
 
-	//private void Start() => 
+	public void addTotalError(char c) {
+		logAction(c.ToString()+ ";ERROR");
+		++TotalError;
+	}
 
-	public void addTotalError() => ++TotalError;
-
-	public void addTotalPhrasesLength() => ++TotalPhrasesLength;
-
-	private void addButtonPressed(char c) => logAction(c.ToString());
-
+	public void onTypedCorrect(char c) {
+		logAction(c.ToString() + ";CORRECT");
+		++TotalPhrasesLength;
+	}
 	private void addBackspace() => logAction("BACKSPACE");
 
 	private void startTest(string testName) {
 		this.testName = testName;
 		TotalError = 0;
 		TotalPhrasesLength = 0;
+		writer.WriteLine("Player;When;Action;Correct/TotalError&TotalPhrasesLength");
 		logAction("START");
 	}
 
-	private void endTest() => logAction("END" + ";" + TotalError.ToString() + ";" + TotalPhrasesLength.ToString());
+	private void endTest() => logAction("END;" + TotalError.ToString() + ";" + TotalPhrasesLength.ToString());
 
 	private void logAction(string action) {
 		if(writer.BaseStream != null) {
