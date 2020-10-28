@@ -21,9 +21,9 @@ public class MoveKeyboard : MonoBehaviour
           
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.tag == "UpAndDown")
+        if (other.CompareTag("UpAndDown")
         {
             Move();
         }
