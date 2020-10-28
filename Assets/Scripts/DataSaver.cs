@@ -32,7 +32,7 @@ public class DataSaver : MonoBehaviour {
 		this.testName = testName;
 		TotalError = 0;
 		TotalPhrasesLength = 0;
-		writer.WriteLine("Player;When;Action;Correct/TotalError&TotalPhrasesLength");
+		writer.WriteLine("Player;When;Action;Additional");
 		logAction("START");
 	}
 
