@@ -23,7 +23,7 @@ public class MoveKeyboard : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("UpAndDown")
+        if (other.CompareTag("UpAndDown"))
         {
             Move();
         }
