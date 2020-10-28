@@ -986,7 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140b480238c2a004ca98677f15543610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   bUP: 1
   bRotate: 1
   Keyboard: {fileID: 718953000}
@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140b480238c2a004ca98677f15543610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   bUP: 0
   bRotate: 1
   Keyboard: {fileID: 718953000}
