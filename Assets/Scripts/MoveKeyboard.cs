@@ -34,13 +34,12 @@ public class MoveKeyboard : MonoBehaviour
 
     void Move()
     {
-        Debug.Log(this.transform.position.y < max);
 
-        if (bUP && this.transform.position.y < max)
+        if (bUP && this.transform.localPosition.y < max)
         {
             Keyboard.transform.position += (new Vector3(0, speed * Time.deltaTime, 0));
         }
-        else if (!bUP && this.transform.position.y > min)
+        else if (!bUP && this.transform.localPosition.y > min)
         {
             Keyboard.transform.position += (new Vector3(0, -speed * Time.deltaTime, 0));
         }
@@ -49,11 +48,11 @@ public class MoveKeyboard : MonoBehaviour
 
     void Rotate()
     {
-        if (bUP && this.transform.rotation.x < max)
+        if (bUP && this.transform.localRotation.x < max)
         {
             Keyboard.transform.Rotate(new Vector3(speed * Time.deltaTime, 0, 0));
         }
-        else if (!bUP && this.transform.rotation.x > min)
+        else if (!bUP && this.transform.localRotation.x > min)
         {
             Keyboard.transform.Rotate(new Vector3(-speed * Time.deltaTime, 0, 0));
         }
