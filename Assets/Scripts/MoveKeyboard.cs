@@ -34,6 +34,8 @@ public class MoveKeyboard : MonoBehaviour
 
     void Move()
     {
+        Debug.Log(this.transform.position.y < max);
+
         if (bUP && this.transform.position.y < max)
         {
             Keyboard.transform.position += (new Vector3(0, speed * Time.deltaTime, 0));
