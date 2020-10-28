@@ -341,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9189501636796922358, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.712
       objectReference: {fileID: 0}
     - target: {fileID: 9189501636796922358, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -702,8 +702,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  min: -0.4
   max: 0.8
+  min: -0.4
   bUP: 0
   bRotate: 0
   Keyboard: {fileID: 170797735}
@@ -833,8 +833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  min: -0.4
   max: 0.8
+  min: -0.4
   bUP: 1
   bRotate: 0
   Keyboard: {fileID: 170797735}
@@ -918,8 +918,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  min: -30
   max: 57
+  min: -30
   bUP: 1
   bRotate: 1
   Keyboard: {fileID: 718953000}
@@ -1049,8 +1049,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  min: -30
   max: 57
+  min: -30
   bUP: 0
   bRotate: 1
   Keyboard: {fileID: 718953000}

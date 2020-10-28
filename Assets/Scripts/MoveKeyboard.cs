@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveKeyboard : MonoBehaviour
 {
-    public float speed, min, max;
+    public float speed, max, min;
     public bool bUP, bRotate;
     public GameObject Keyboard;
 
@@ -38,7 +38,7 @@ public class MoveKeyboard : MonoBehaviour
         {
             Keyboard.transform.position += (new Vector3(0, speed * Time.deltaTime, 0));
         }
-        else if (this.transform.position.y > min)
+        else if (!bUP && this.transform.position.y > min)
         {
             Keyboard.transform.position += (new Vector3(0, -speed * Time.deltaTime, 0));
         }
@@ -51,7 +51,7 @@ public class MoveKeyboard : MonoBehaviour
         {
             Keyboard.transform.Rotate(new Vector3(speed * Time.deltaTime, 0, 0));
         }
-        else if (this.transform.rotation.x > min)
+        else if (!bUP && this.transform.rotation.x > min)
         {
             Keyboard.transform.Rotate(new Vector3(-speed * Time.deltaTime, 0, 0));
         }
