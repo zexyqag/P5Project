@@ -177,6 +177,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &718953000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1939437300655809391, guid: f782f51bc9025524581539d34ea678a3, type: 3}
+  m_PrefabInstance: {fileID: 1060610923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1020063585
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +989,7 @@ MonoBehaviour:
   speed: 1
   bUP: 1
   bRotate: 1
-  Keyboard: {fileID: 170797735}
+  Keyboard: {fileID: 718953000}
 --- !u!65 &1704415325
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1113,7 +1118,7 @@ MonoBehaviour:
   speed: 1
   bUP: 0
   bRotate: 1
-  Keyboard: {fileID: 170797735}
+  Keyboard: {fileID: 718953000}
 --- !u!65 &1853057874
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -37,11 +37,11 @@ public class MoveKeyboard : MonoBehaviour
     {
         if (bUP)
         {
-            Keyboard.transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+            Keyboard.transform.position += (new Vector3(0, speed * Time.deltaTime, 0));
         }
         else
         {
-            Keyboard.transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+            Keyboard.transform.position += (new Vector3(0, -speed * Time.deltaTime, 0));
         }
 
     }
