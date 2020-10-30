@@ -1048,11 +1048,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4072849142634668521, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
+      propertyPath: playerVariants.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072849142634668521, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: PlayerPrefab
       value: 
       objectReference: {fileID: 3798153695000868038, guid: a9b05d7e871e70545b2eb4610b188400, type: 3}
     m_RemovedComponents:
     - {fileID: 2080602744, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
+    - {fileID: 2080602741, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
+    - {fileID: 4149749370005803617, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
+    - {fileID: 2080602742, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
 --- !u!1001 &4158597229482723774
 PrefabInstance:

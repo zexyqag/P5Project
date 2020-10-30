@@ -192,8 +192,8 @@ MonoBehaviour:
   bUP: 0
   bRotate: 0
   Keyboard: {fileID: 0}
-  testRotate: 0
-  testTransform: 0
+  m: 0
+  c: 0
 --- !u!65 &65545987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -320,13 +320,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  max: 57
-  min: -30
+  max: 88
+  min: 320
   bUP: 1
   bRotate: 1
   Keyboard: {fileID: 0}
-  testRotate: 0
-  testTransform: 0
+  m: 0
+  c: 0
 --- !u!65 &199934178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -491,8 +491,8 @@ MonoBehaviour:
   bUP: 1
   bRotate: 0
   Keyboard: {fileID: 0}
-  testRotate: 0
-  testTransform: 0
+  m: 0
+  c: 0
 --- !u!65 &811482096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1022,6 +1022,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5776790704171105158, guid: c83834e09fb955942b54be053f89767c, type: 3}
+      propertyPath: min
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776790704171105158, guid: c83834e09fb955942b54be053f89767c, type: 3}
+      propertyPath: max
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776790704240033931, guid: c83834e09fb955942b54be053f89767c, type: 3}
+      propertyPath: min
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776790704240033931, guid: c83834e09fb955942b54be053f89767c, type: 3}
+      propertyPath: max
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 5776790704415021026, guid: c83834e09fb955942b54be053f89767c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.72414136
@@ -1136,13 +1152,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  max: 57
-  min: -30
+  max: 88
+  min: 320
   bUP: 0
   bRotate: 1
   Keyboard: {fileID: 0}
-  testRotate: 0
-  testTransform: 0
+  m: 0
+  c: 0
 --- !u!65 &1674667035
 BoxCollider:
   m_ObjectHideFlags: 0

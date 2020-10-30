@@ -8,10 +8,29 @@ public class MoveKeyboard : MonoBehaviour
     public bool bUP, bRotate;
     public GameObject Keyboard;
 
+    private float fAngle;
+
+    public bool m, c;
+
     private void Start()
     {
         EventSystem.onButtonPressed += Deactivate;
         EventSystem.onSwtichInputMethod += Activate;
+
+        fAngle = Keyboard.GetComponent<Transform>().eulerAngles.x;
+    }
+
+    private void Update()
+    {
+        if (m)
+        {
+            Move();
+        }
+
+        if (c)
+        {
+            Rotate();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -49,15 +68,18 @@ public class MoveKeyboard : MonoBehaviour
 
     void Rotate()
     {
-        Transform transformKeyboard = Keyboard.GetComponent<Transform>();
+        Debug.Log(fAngle);
+        fAngle = Keyboard.GetComponent<Transform>().eulerAngles.x;
 
-        if (bUP && transformKeyboard.rotation.x < max)
+        if (bUP && fAngle < max)
         {
-            Keyboard.transform.Rotate(new Vector3(speed * Time.deltaTime, 0, 0));
+            fAngle += speed * Time.deltaTime;
+            Keyboard.transform.localEulerAngles = (new Vector3(fAngle, 0, 0));
         }
-        else if (!bUP && transformKeyboard.rotation.x > min)
+        else if (!bUP && fAngle > min)
         {
-            Keyboard.transform.Rotate(new Vector3(-speed * Time.deltaTime, 0, 0));
+            fAngle += -speed * Time.deltaTime;
+            Keyboard.transform.localEulerAngles = (new Vector3(fAngle, 0, 0));
         }
     }
 
