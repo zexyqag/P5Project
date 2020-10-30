@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
 public class StringListFromFileHandler : MonoBehaviour {
+
+	#region Private var
+	[SerializeField] private TextAsset phrasesToWriteAsset = null;
 	private List<string> phrasesToWriteStringList = new List<string>();
 	private int phraseIndex = 0;
-	public string currentString { get; private set; }
-	[SerializeField] private TextAsset phrasesToWriteAsset = null;
-	private Text textField;
+	private Text textField = null;
+	private string currentString = string.Empty;
+	#endregion
 
 	private void Awake() {
 		EventSystem.onNextString += nextText;
@@ -22,7 +24,7 @@ public class StringListFromFileHandler : MonoBehaviour {
 				}
 			}
 		} else {
-			Debug.LogError("Not text file assigned to: " + this + " on " + gameObject.name);
+			Debug.LogError("No text file assigned to: " + this + " on " + gameObject.name);
 			phrasesToWriteStringList = new List<string> { "No text file assigned", "You forgot to assgin a text file", "Missing text file", "Text file be gone" };
 		}
 	}

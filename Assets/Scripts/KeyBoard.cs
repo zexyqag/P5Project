@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using System;
 
 public class KeyBoard : MonoBehaviour {
-	private Text textField;
 
+	private Text textField;
     public Color corretColer = Color.green, wrongColor = Color.red;
 
 	private void Start() {

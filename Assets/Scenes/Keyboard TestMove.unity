@@ -1447,25 +1447,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
---- !u!1 &2080602740 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4072849142634668518, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
-  m_PrefabInstance: {fileID: 2080602739}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2080602741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2080602740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061d5ba7730e6d04fa34fd7e16a98977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Correct: {fileID: 8300000, guid: fd0e03f5a96773f459e60444f6a73c23, type: 3}
-  Wrong: {fileID: 8300000, guid: 307a28ea3699dc248ab901d0d4a552d2, type: 3}
-  KeyboardClick: {fileID: 8300000, guid: ed64c0e299cf81e4ba4228d6c65ce46e, type: 3}
-  Miss: {fileID: 0}
-  MissingAudio: {fileID: 8300000, guid: 128eba63f6457ff41a65fbae1979778e, type: 3}

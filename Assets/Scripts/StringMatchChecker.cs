@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class StringMatchChecker : MonoBehaviour {
+
+	#region Public var
 	public UnityEvent onStringMatch, onCharacterError;
+	#endregion
+
+	#region Private var
 	private string stringToMatch = "";
-	private int currentStringElement = 0;
-    private int lastCorrectElement;
-	private bool isAnnyLetterIncorrect = false;
-	[SerializeField] private bool isRaycastScene = false;
+	private int currentStringElement = 0, lastCorrectElement = 0;
+	private bool isAnyLetterIncorrect = false;
+	#endregion
+
 
 	private void Awake() {
 		EventSystem.onButtonPressed += checkCharacterForMatch;
@@ -24,8 +26,7 @@ public class StringMatchChecker : MonoBehaviour {
 		stringToMatch = s.ToUpper();
 	}
 
-	private void toDefault()
-    {
+	private void toDefault() {
 		currentStringElement = 0;
 	}
 
@@ -43,7 +44,7 @@ public class StringMatchChecker : MonoBehaviour {
 			if(stringToMatch[currentStringElement].Equals(c)) {
 				EventSystem.onTypedCorrect(c);
 
-				if (isAnnyLetterIncorrect == false) {
+				if(isAnyLetterIncorrect == false) {
 					lastCorrectElement = currentStringElement;
 					EventSystem.onChangeColorCorrect();
 				}
@@ -51,38 +52,26 @@ public class StringMatchChecker : MonoBehaviour {
 			} else {
 				onCharacterError.Invoke();
 				EventSystem.onTypedError(c);
-				isAnnyLetterIncorrect = true;
+				isAnyLetterIncorrect = true;
 			}
 		}
 		++currentStringElement;
 	}
 
-	
+
 
 	void backspace() {
 		if(currentStringElement > 0) {
 			--currentStringElement;
 
-            if (lastCorrectElement > currentStringElement)
-            {
-				lastCorrectElement = currentStringElement -1;
-            }
+			if(lastCorrectElement > currentStringElement) {
+				lastCorrectElement = currentStringElement - 1;
+			}
 
-            if (currentStringElement == lastCorrectElement +1)
-            {
-				isAnnyLetterIncorrect = false;
-                EventSystem.onChangeColorCorrect();
-            }
-        }
-	}
-
-	[ContextMenu("invokeOnStringMatch")]
-	public void invokeOnStringMatch() {
-		onStringMatch.Invoke();
-	}
-
-	[ContextMenu("invokeonCharacterError")]
-	public void invokeonCharacterError() {
-		onCharacterError.Invoke();
+			if(currentStringElement == lastCorrectElement + 1) {
+				isAnyLetterIncorrect = false;
+				EventSystem.onChangeColorCorrect();
+			}
+		}
 	}
 }
