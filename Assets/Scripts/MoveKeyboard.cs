@@ -71,12 +71,12 @@ public class MoveKeyboard : MonoBehaviour
         Debug.Log(fAngle);
         fAngle = Keyboard.GetComponent<Transform>().eulerAngles.x;
 
-        if (bUP && fAngle < max)
+        if (bUP)
         {
             fAngle += speed * Time.deltaTime;
             Keyboard.transform.localEulerAngles = (new Vector3(fAngle, 0, 0));
         }
-        else if (!bUP && fAngle > min)
+        else if (!bUP)
         {
             fAngle += -speed * Time.deltaTime;
             Keyboard.transform.localEulerAngles = (new Vector3(fAngle, 0, 0));
