@@ -49,13 +49,13 @@ public class MoveKeyboard : MonoBehaviour
 
     void Rotate()
     {
-        Quaternion rotationKeyboard = Keyboard.GetComponent<Transform>().rotation;
+        Transform transformKeyboard = Keyboard.GetComponent<Transform>();
 
-        if (bUP && rotationKeyboard.x < max)
+        if (bUP && transformKeyboard.rotation.x < max)
         {
             Keyboard.transform.Rotate(new Vector3(speed * Time.deltaTime, 0, 0));
         }
-        else if (!bUP && rotationKeyboard.x > min)
+        else if (!bUP && transformKeyboard.rotation.x > min)
         {
             Keyboard.transform.Rotate(new Vector3(-speed * Time.deltaTime, 0, 0));
         }
