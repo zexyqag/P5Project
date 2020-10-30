@@ -34,12 +34,13 @@ public class MoveKeyboard : MonoBehaviour
 
     void Move()
     {
+        Vector3 positionKeyboard = Keyboard.GetComponent<Transform>().position;
 
-        if (bUP && this.transform.localPosition.y < max)
+        if (bUP && positionKeyboard.y < max)
         {
             Keyboard.transform.position += (new Vector3(0, speed * Time.deltaTime, 0));
         }
-        else if (!bUP && this.transform.localPosition.y > min)
+        else if (!bUP && positionKeyboard.y > min)
         {
             Keyboard.transform.position += (new Vector3(0, -speed * Time.deltaTime, 0));
         }
@@ -48,11 +49,13 @@ public class MoveKeyboard : MonoBehaviour
 
     void Rotate()
     {
-        if (bUP && this.transform.localRotation.x < max)
+        Quaternion rotationKeyboard = Keyboard.GetComponent<Transform>().rotation;
+
+        if (bUP && rotationKeyboard.x < max)
         {
             Keyboard.transform.Rotate(new Vector3(speed * Time.deltaTime, 0, 0));
         }
-        else if (!bUP && this.transform.localRotation.x > min)
+        else if (!bUP && rotationKeyboard.x > min)
         {
             Keyboard.transform.Rotate(new Vector3(-speed * Time.deltaTime, 0, 0));
         }
