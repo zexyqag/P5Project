@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR.InteractionSystem;
 
 public class StartTest : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class StartTest : MonoBehaviour
 
     [ContextMenu("Start Testing")]
 	private void StartTesting() {
+        Destroy(Player.instance.gameObject);
         SceneManager.LoadScene(1);
     }
 }
