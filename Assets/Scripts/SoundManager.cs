@@ -1,11 +1,15 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+[Serializable] public enum enAudio { Correct, Wrong, KeyboardClick, Miss };
 public class SoundManager : MonoBehaviour {
+
+	#region Private Var
 	[SerializeField] private AudioClip Correct = null, Wrong = null, KeyboardClick = null, Miss = null, MissingAudio = null;
+	#endregion
+
+	#region Public Var
 	public static SoundManager Instance { get; private set; }
+	#endregion
 
 	private void Awake() {
 		if (Instance == null) {
@@ -29,4 +33,3 @@ public class SoundManager : MonoBehaviour {
 		}
 	}
 }
-[Serializable] public enum enAudio { Correct, Wrong, KeyboardClick, Miss };
