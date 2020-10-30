@@ -318,8 +318,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  max: 57
-  min: -30
+  max: 88
+  min: 320
   bUP: 1
   bRotate: 1
   Keyboard: {fileID: 1060610954}
@@ -1083,8 +1083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  max: 57
-  min: -30
+  max: 88
+  min: 320
   bUP: 0
   bRotate: 1
   Keyboard: {fileID: 1060610954}
