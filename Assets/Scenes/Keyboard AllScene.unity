@@ -1409,7 +1409,7 @@ PrefabInstance:
     - target: {fileID: 4072849142634668521, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: playerVariants.Array.data[0]
       value: 
-      objectReference: {fileID: 168303053182981836, guid: 3544028f9faf32f4fb1c3c3b6b43677d, type: 3}
+      objectReference: {fileID: 1962689877772436596, guid: 741c49b0b404ed3468e801c9f58c57d8, type: 3}
     - target: {fileID: 4072849142634668521, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: playerVariants.Array.data[1]
       value: 
@@ -1448,7 +1448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4149749370005803617, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: TimeLeft
-      value: 60
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
