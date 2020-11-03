@@ -15,8 +15,16 @@ public class DataSaver : MonoBehaviour {
 		EventSystem.onTestType += TestType;
 		EventSystem.onSwtichInputMethod += endTest;
 		EventSystem.onButtonPressed += startTest;
+		EventSystem.onMissedButton += onMissedButton;
 
 		OpenWriter();
+	}
+
+	private void onMissedButton() {
+		if(isTestStarted) {
+			logAction("MISSED;0;0");
+			++TotalPhrasesLength;
+		}
 	}
 
 	private void TestType(string testName) {
