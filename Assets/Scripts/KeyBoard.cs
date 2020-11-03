@@ -7,16 +7,16 @@ using System;
 public class KeyBoard : MonoBehaviour {
 
 	private Text textField;
-    public Color corretColer = Color.green, wrongColor = Color.red;
+	public Color corretColer = Color.green, wrongColor = Color.red;
 
 	private void Start() {
 		EventSystem.onButtonPressed += AddText;
 		EventSystem.onClearKeyboard += deleteKeyboardText;
-        EventSystem.onChangeColorCorrect += changeCorrectMaterial;
-        EventSystem.onTypedError += changeWrongMaterial;
-        EventSystem.onBackspace += Backspace;
+		EventSystem.onChangeColorCorrect += changeCorrectMaterial;
+		EventSystem.onTypedError += changeWrongMaterial;
+		EventSystem.onBackspace += Backspace;
 		EventSystem.onSwtichInputMethod += resetTextField;
-		textField = this.GetComponent<UnityEngine.UI.Text>();
+		textField = this.GetComponent<Text>();
 		FlashIndicator();
 
 	}
@@ -29,17 +29,15 @@ public class KeyBoard : MonoBehaviour {
 		textField.text += "|";
 	}
 
-    void changeCorrectMaterial()
-    {
-        textField.color = corretColer;
-    }
+	void changeCorrectMaterial() {
+		textField.color = corretColer;
+	}
 
-    void changeWrongMaterial(char _)
-    {
-        textField.color = wrongColor;
-    }
+	void changeWrongMaterial(char _) {
+		textField.color = wrongColor;
+	}
 
-    [ContextMenu("Backspace")]
+	[ContextMenu("Backspace")]
 	void Backspace() {
 		if(textField.text.Length >= 2) {
 			textField.text = textField.text.Substring(0, textField.text.Length - 2) + "|";
@@ -54,20 +52,20 @@ public class KeyBoard : MonoBehaviour {
 		textField.text = "";
 	}
 
-	private void resetTextField()
-	{
+	private void resetTextField() {
 		textField.text = "|";
 	}
 
 	IEnumerator WaitforTime(float timeToWait) {
-		if(textField.text.Length >= 1) {
-			yield return new WaitForSeconds(timeToWait);
-			textField.text = textField.text.Substring(0, textField.text.Length - 1) + " ";
+		yield return new WaitForSeconds(timeToWait);
+		blink(" ");
 
-			yield return new WaitForSeconds(timeToWait);
-			textField.text = textField.text.Substring(0, textField.text.Length - 1) + "|";
-		}
-
+		yield return new WaitForSeconds(timeToWait);
+		blink("|");
 		FlashIndicator();
+	}
+
+	private void blink(string s) {
+		textField.text = textField.text.Length >= 1 ? textField.text.Substring(0, textField.text.Length - 1) + s : "|";
 	}
 }

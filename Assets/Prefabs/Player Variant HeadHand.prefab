@@ -445,7 +445,7 @@ MonoBehaviour:
   handCollider: {fileID: 0}
   clearanceCheckMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 0
   hand: {fileID: 0}
 --- !u!114 &5610889258280641805
 MonoBehaviour:
@@ -958,7 +958,7 @@ MonoBehaviour:
   handCollider: {fileID: 0}
   clearanceCheckMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294967295
   hand: {fileID: 0}
 --- !u!114 &8689588158781858084
 MonoBehaviour:

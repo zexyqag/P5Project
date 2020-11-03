@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class StringMatchChecker : MonoBehaviour {
@@ -17,17 +18,20 @@ public class StringMatchChecker : MonoBehaviour {
 	private void Awake() {
 		EventSystem.onButtonPressed += checkCharacterForMatch;
 		EventSystem.onValidateSentence += checkStringForMatch;
-		EventSystem.onSwtichInputMethod += toDefault;
+		EventSystem.onSwtichInputMethod += resetProgress;
 		EventSystem.onUpdateStringToMatch += updateStringToMatch;
 		EventSystem.onBackspace += backspace;
+		EventSystem.onResetStringMatchChecker += resetProgress;
+	}
+
+	private void resetProgress() {
+		currentStringElement = 0;
+		lastCorrectElement = 0;
+		isAnyLetterIncorrect = false;
 	}
 
 	private void updateStringToMatch(string s) {
 		stringToMatch = s.ToUpper();
-	}
-
-	private void toDefault() {
-		currentStringElement = 0;
 	}
 
 	public void checkStringForMatch(string s) {

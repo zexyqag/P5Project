@@ -3,23 +3,28 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class CountDown : MonoBehaviour
-{
+public class CountDown : MonoBehaviour {
+	public UnityEvent TimerEnd;
 	public float TimeLeft = 1;
 	private float ResetTime = 0;
 	private bool isTimerOn = false;
 	private bool isDone = false;
+	public bool isReady = false;
 
 	private void Awake() {
 		EventSystem.onButtonPressed += StartCountdown;
 		ResetTime = TimeLeft;
 	}
 
-	public void StartCountdown(char _) {
-		if(!isTimerOn) {
+	public void StartCountdown(char c) {
+		if(!isTimerOn && isReady) {
+			isReady = false;
 			isTimerOn = true;
 			StartCoroutine(wait());
-		}	
+		}
+	}
+	public void ReadyUp() {
+		isReady = true;
 	}
 
 	IEnumerator wait() {
@@ -30,17 +35,17 @@ public class CountDown : MonoBehaviour
 		isTimerOn = false;
 		TimeLeft = ResetTime;
 
-		
+
 		EventSystem.onSwtichInputMethod();
 		EventSystem.onNextString();
 		EventSystem.onSetPos();
+		TimerEnd.Invoke();
 
-		if (isDone)
-        {
+		if(isDone) {
 			SceneManager.LoadScene(0);
-        }
+		}
 
 		isDone = true;
-		
+
 	}
 }

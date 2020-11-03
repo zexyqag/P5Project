@@ -14,8 +14,8 @@ public class MoveKeyboard : MonoBehaviour
 
     private void Start()
     {
-        EventSystem.onButtonPressed += Deactivate;
-        EventSystem.onSwtichInputMethod += Activate;
+        //EventSystem.onButtonPressed += Deactivate;
+        //EventSystem.onSwtichInputMethod += Activate;
 
         fAngle = Keyboard.GetComponent<Transform>().eulerAngles.x;
     }
@@ -68,7 +68,6 @@ public class MoveKeyboard : MonoBehaviour
 
     void Rotate()
     {
-        Debug.Log(fAngle);
         fAngle = Keyboard.GetComponent<Transform>().eulerAngles.x;
 
         if (bUP)
@@ -86,7 +85,6 @@ public class MoveKeyboard : MonoBehaviour
     void Deactivate(char notInUse)
     {
         this.gameObject.SetActive(false);
-        Debug.Log(this.gameObject);
     }
 
     void Activate()

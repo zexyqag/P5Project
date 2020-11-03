@@ -6,15 +6,25 @@ public class DataSaver : MonoBehaviour {
 	private int TotalError = 0, TotalPhrasesLength = 0;
 	private string filePath = string.Empty, testName = string.Empty;
 	private StreamWriter writer = null;
+	private bool isTestStarted = false, isReady = false;
 
 	private void Awake() {
 		EventSystem.onTypedCorrect += onTypedCorrect;
 		EventSystem.onTypedError += addTotalError;
 		EventSystem.onBackspace += addBackspace;
-		EventSystem.onTestType += startTest;
+		EventSystem.onTestType += TestType;
 		EventSystem.onSwtichInputMethod += endTest;
+		EventSystem.onButtonPressed += startTest;
 
 		OpenWriter();
+	}
+
+	private void TestType(string testName) {
+		this.testName = testName;
+	}
+
+	public void ReadyUp() {
+		isReady = true;
 	}
 
 	private void OpenWriter() {
@@ -24,27 +34,37 @@ public class DataSaver : MonoBehaviour {
 			writer.WriteLine("Imput Method;Time;Keypressed;Correct;Incorrect");
 		}
 	}
-
 	public void addTotalError(char c) {
-		logAction(c.ToString() + ";0;1");
-		++TotalError;
+		if(isTestStarted) {
+			logAction(c.ToString() + ";0;1");
+			++TotalError;
+		}
 	}
 
 	public void onTypedCorrect(char c) {
-		logAction(c.ToString() + ";1;0");
-		++TotalPhrasesLength;
+		if(isTestStarted) {
+			logAction(c.ToString() + ";1;0");
+			++TotalPhrasesLength;
+		}
 	}
 	private void addBackspace() => logAction("BACKSPACE;0;0");
 
-	private void startTest(string testName) {
+	private void startTest(char c) {
+		if(!isReady || isTestStarted)
+			return;
+
+		isTestStarted = true;
 		OpenWriter();
-		this.testName = testName;
 		TotalError = 0;
 		TotalPhrasesLength = 0;
-		logAction("START;0;0");
+		//logAction("START;0;0");
 	}
 
-	private void endTest() => logAction("END;0;0"/* + TotalError.ToString() + ";" + TotalPhrasesLength.ToString()*/);
+	private void endTest() {
+		isTestStarted = false;
+		isReady = false;
+		//logAction("END;0;0"/* + TotalError.ToString() + ";" + TotalPhrasesLength.ToString()*/);
+	}
 
 	private void logAction(string action) {
 		if(writer.BaseStream != null) {
