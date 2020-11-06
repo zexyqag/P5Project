@@ -426,6 +426,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.51
       objectReference: {fileID: 0}
+    - target: {fileID: 1939437300655809390, guid: f782f51bc9025524581539d34ea678a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.32678244
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939437300655809390, guid: f782f51bc9025524581539d34ea678a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939437300655809390, guid: f782f51bc9025524581539d34ea678a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939437300655809390, guid: f782f51bc9025524581539d34ea678a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9450996
+      objectReference: {fileID: 0}
     - target: {fileID: 9189501636796922357, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_Name
       value: Keyboard and Writeing Area Raycast
