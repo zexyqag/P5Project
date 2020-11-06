@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Keyboard AllScene.unity
     guid: 4b1f4ecf8a7966c45b300afe15d6dcfe
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: e836637206ea4f644b41875175c2d6f5
   m_configObjects:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 32d024eab9a295e4ba1aaa28a456fbd7, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e7eade6da33e56e4fae9bac3dd5a1ae2, type: 2}
