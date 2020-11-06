@@ -187,12 +187,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -15
-  max: 0
+  max: 50
   min: 0
   bUP: 1
   bRotate: 1
   Keyboard: {fileID: 1060610955}
-  m: 0
   c: 0
 --- !u!65 &48372141
 BoxCollider:
@@ -320,12 +319,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  max: 88
-  min: 320
+  max: 0
+  min: 0
   bUP: 1
   bRotate: 1
   Keyboard: {fileID: 1060610954}
-  m: 0
   c: 0
 --- !u!65 &199934178
 BoxCollider:
@@ -751,6 +749,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -38.147
       objectReference: {fileID: 0}
+    - target: {fileID: 5090800153077713061, guid: f782f51bc9025524581539d34ea678a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.889
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090800153077713061, guid: f782f51bc9025524581539d34ea678a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.171
+      objectReference: {fileID: 0}
     - target: {fileID: 9189501636796922357, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_Name
       value: Keyboard and Writeing Area Raycast
@@ -761,11 +767,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9189501636796922358, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.998
+      value: 1.542
       objectReference: {fileID: 0}
     - target: {fileID: 9189501636796922358, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.018
       objectReference: {fileID: 0}
     - target: {fileID: 9189501636796922358, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1087,11 +1093,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: -15
   max: 0
-  min: 0
+  min: 20
   bUP: 0
   bRotate: 1
   Keyboard: {fileID: 1060610955}
-  m: 0
   c: 0
 --- !u!65 &1176760249
 BoxCollider:
@@ -1283,12 +1288,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  max: 88
-  min: 320
+  max: 0
+  min: 0
   bUP: 0
   bRotate: 1
   Keyboard: {fileID: 1060610954}
-  m: 0
   c: 0
 --- !u!65 &1674667035
 BoxCollider:

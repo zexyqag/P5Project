@@ -10,24 +10,16 @@ public class MoveKeyboard : MonoBehaviour
 
     private float fAngle;
 
-    public bool m, c;
+    public bool c;
 
     private void Start()
     {
-        //EventSystem.onButtonPressed += Deactivate;
-        //EventSystem.onSwtichInputMethod += Activate;
-
         fAngle = Keyboard.GetComponent<Transform>().eulerAngles.x;
     }
 
     private void Update()
     {
-        if (m)
-        {
-            //Move();
-        }
-
-        if (c)
+        if (c) // testing purposes
         {
             Rotate();
         }
@@ -35,63 +27,25 @@ public class MoveKeyboard : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        switch (bRotate)
-        {
-            case true:
-                if (other.CompareTag("UpAndDown")){
-                    Rotate();
-                }
-                break;
-
-            case false:
-                if (other.CompareTag("UpAndDown")){
-                   // Move();
-                }
-                break;
-        }
-    }
-
-    /*
-    void Move()
-    {
-        Vector3 positionKeyboard = Keyboard.GetComponent<Transform>().position;
-
-        if (bUP && positionKeyboard.y < max)
-        {
-            Keyboard.transform.position += (new Vector3(0, speed * Time.deltaTime, 0));
-        }
-        else if (!bUP && positionKeyboard.y > min)
-        {
-            Keyboard.transform.position += (new Vector3(0, -speed * Time.deltaTime, 0));
+        if (other.CompareTag("UpAndDown")){
+            Rotate();
         }
 
     }
-    */
 
     void Rotate()
     {
         fAngle = Keyboard.GetComponent<Transform>().eulerAngles.x;
 
-        if (bUP)
+        if (bUP && fAngle < max)
         {
             fAngle += speed * Time.deltaTime;
             Keyboard.transform.localEulerAngles = (new Vector3(fAngle, 0, 0));
         }
-        else if (!bUP)
+        else if (!bUP && fAngle > min)
         {
             fAngle += -speed * Time.deltaTime;
             Keyboard.transform.localEulerAngles = (new Vector3(fAngle, 0, 0));
         }
     }
-
-    void Deactivate(char notInUse)
-    {
-        this.gameObject.SetActive(false);
-    }
-
-    void Activate()
-    {
-        this.gameObject.SetActive(true);
-    }
-
 }
