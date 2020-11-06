@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  max: 76
+  max: 360
   min: 0
   bUP: 1
   Keyboard: {fileID: 1060610954}
@@ -725,15 +725,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1939437300655809390, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.3267823
+      value: -0.56074643
       objectReference: {fileID: 0}
     - target: {fileID: 1939437300655809390, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.94509965
+      value: 0.8279877
       objectReference: {fileID: 0}
     - target: {fileID: 1939437300655809390, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -38.147
+      value: -68.215
       objectReference: {fileID: 0}
     - target: {fileID: 5090800153077713061, guid: f782f51bc9025524581539d34ea678a3, type: 3}
       propertyPath: m_LocalRotation.x
