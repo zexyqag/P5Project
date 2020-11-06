@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveKeyboard : MonoBehaviour
 {
     public float speed, max, min;
-    public bool bUP, bRotate;
+    public bool bUP;
     public GameObject Keyboard;
 
     private float fAngle;
