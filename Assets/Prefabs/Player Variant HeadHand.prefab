@@ -2378,6 +2378,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1959864044578021630}
+  - component: {fileID: 5026754830521288020}
+  - component: {fileID: 5055826567117812860}
   m_Layer: 0
   m_Name: HoverPoint
   m_TagString: Untagged
@@ -2399,6 +2401,52 @@ Transform:
   m_Father: {fileID: 1962689877772342490}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5026754830521288020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963408403335133276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aaa8a3afb932fe478757c1e89cf0cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initializeSteamVROnAwake: 1
+  doNotDestroy: 1
+  steamvr_render: {fileID: 0}
+--- !u!114 &5055826567117812860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963408403335133276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a9b39235339104889bf8e9178fc630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  booleanAction:
+    actionPath: /actions/default/in/HeadsetOnHead
+    needsReinit: 0
+  inputSource: 9
+  onChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onPress:
+    m_PersistentCalls:
+      m_Calls: []
+  onPressDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onPressUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1963408403429882260
 GameObject:
   m_ObjectHideFlags: 0
