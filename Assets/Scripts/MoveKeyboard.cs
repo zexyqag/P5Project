@@ -24,7 +24,7 @@ public class MoveKeyboard : MonoBehaviour
     {
         if (m)
         {
-            Move();
+            //Move();
         }
 
         if (c)
@@ -45,12 +45,13 @@ public class MoveKeyboard : MonoBehaviour
 
             case false:
                 if (other.CompareTag("UpAndDown")){
-                    Move();
+                   // Move();
                 }
                 break;
         }
     }
 
+    /*
     void Move()
     {
         Vector3 positionKeyboard = Keyboard.GetComponent<Transform>().position;
@@ -65,6 +66,7 @@ public class MoveKeyboard : MonoBehaviour
         }
 
     }
+    */
 
     void Rotate()
     {
