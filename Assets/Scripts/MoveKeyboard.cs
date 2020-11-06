@@ -41,13 +41,13 @@ public class MoveKeyboard : MonoBehaviour
         if (bUP && fAngle < max)
         {
             fAngle += speed * Time.deltaTime;
-            Keyboard.transform.localEulerAngles = (new Vector3(fAngle, 0, 0));
+            Keyboard.transform.eulerAngles = (new Vector3(fAngle, 0, 0));
         }
 
         else if (!bUP && fAngle < min)
         {
             fAngle += -speed * Time.deltaTime;
-            Keyboard.transform.localEulerAngles = (new Vector3(fAngle, 0, 0));
+            Keyboard.transform.eulerAngles = (new Vector3(fAngle, 0, 0));
         }
     }
 }
