@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class HandPress : MonoBehaviour {
@@ -26,7 +23,6 @@ public class HandPress : MonoBehaviour {
 	}
 
 	public void HitButton() {
-		Debug.Log(GetInstanceID());
 		if(CurrentButtonHower && CurrentButtonHower.GetComponent<ButtonBehavior>()) {
 			LastButton = CurrentButtonHower;
 			CurrentButtonHower.GetComponent<ButtonBehavior>().OnButtonDown();
@@ -34,7 +30,6 @@ public class HandPress : MonoBehaviour {
 		} else {
 			EventSystem.onMissedButton();
 		}
-
 	}
 
 	public void ReleaseButton() {
