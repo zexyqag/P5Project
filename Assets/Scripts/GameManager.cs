@@ -19,9 +19,11 @@ public class GameManager : MonoBehaviour {
 
 	private bool isBothPlayerVerants = false; // bool is true if both player imput types has bin testet
 
-	[ContextMenu("start")]
-	private void Start() {
+	public bool StartWithHeadHand;
 
+	[ContextMenu("start")]
+	private void Start() 
+	{		
 		EventSystem.onSwtichInputMethod += switchInputType;
 
 		for (int i = 0; i < playerVariants.Count; i++)
@@ -29,9 +31,21 @@ public class GameManager : MonoBehaviour {
 			PlayerAndKeyboardVariants.Add(new KeyValuePair<Transform, Vector2>(playerVariants[i], keyboards[i]));
 		}
 
-		PlayerAndKeyboardVariants.Shuffle();
-		setPlayerAndKeyboardPos(0);
+		setPlayerAndKeyboardPos(PlayerPrefs.GetInt("StartWithHeadHand"));
+		ReversePlayerPrefBoolean();
 		onStart.Invoke();
+	}
+
+	void ReversePlayerPrefBoolean()
+    {
+        if (PlayerPrefs.GetInt("StartWithHeadHand") == 1)
+        {
+			PlayerPrefs.SetInt("StartWithHeadHand", 0);
+		}
+        else
+        {
+			PlayerPrefs.SetInt("StartWithHeadHand", 1);
+		}		
 	}
 
 	[ContextMenu("set the positions of all buttons")]
@@ -65,7 +79,7 @@ public class GameManager : MonoBehaviour {
 			return;
         }
 		Destroy(currentPlayerVariant.gameObject);
-		setPlayerAndKeyboardPos(1);
+		setPlayerAndKeyboardPos(PlayerPrefs.GetInt("StartWithHeadHand"));
 		isBothPlayerVerants = true;
 	}
 
