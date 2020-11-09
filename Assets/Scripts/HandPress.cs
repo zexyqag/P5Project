@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -7,11 +8,6 @@ public class HandPress : MonoBehaviour {
 
 	private GameObject CurrentButtonHower;
 	private GameObject LastButton;
-
-
-	private void Update() {
-
-	}
 
 	private void OnTriggerStay(Collider other) {
 		if(other.GetComponent<ButtonBehavior>()) {
@@ -30,7 +26,7 @@ public class HandPress : MonoBehaviour {
 	}
 
 	public void HitButton() {
-
+		Debug.Log(GetInstanceID());
 		if(CurrentButtonHower && CurrentButtonHower.GetComponent<ButtonBehavior>()) {
 			LastButton = CurrentButtonHower;
 			CurrentButtonHower.GetComponent<ButtonBehavior>().OnButtonDown();

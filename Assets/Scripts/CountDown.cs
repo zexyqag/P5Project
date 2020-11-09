@@ -48,4 +48,11 @@ public class CountDown : MonoBehaviour {
 		isDone = true;
 
 	}
+
+	private void OnApplicationQuit() => Unsubscribe();
+	private void OnDisable() => Unsubscribe();
+	private void OnDestroy() => Unsubscribe();
+	private void Unsubscribe() {
+		EventSystem.onButtonPressed -= StartCountdown;
+	}
 }

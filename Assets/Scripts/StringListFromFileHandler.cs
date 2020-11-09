@@ -51,4 +51,11 @@ public class StringListFromFileHandler : MonoBehaviour {
 		textField.text = currentString;
 		EventSystem.onUpdateStringToMatch(currentString);
 	}
+
+	private void OnApplicationQuit() => Unsubscribe();
+	private void OnDisable() => Unsubscribe();
+	private void OnDestroy() => Unsubscribe();
+	private void Unsubscribe() {
+		EventSystem.onNextString -= nextText;
+	}
 }

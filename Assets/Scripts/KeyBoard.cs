@@ -9,16 +9,18 @@ public class KeyBoard : MonoBehaviour {
 	private Text textField;
 	public Color corretColer = Color.green, wrongColor = Color.red;
 
-	private void Start() {
+	private void Awake() {
 		EventSystem.onButtonPressed += AddText;
 		EventSystem.onClearKeyboard += deleteKeyboardText;
 		EventSystem.onChangeColorCorrect += changeCorrectMaterial;
 		EventSystem.onTypedError += changeWrongMaterial;
 		EventSystem.onBackspace += Backspace;
 		EventSystem.onSwtichInputMethod += resetTextField;
+	}
+
+	private void Start() {
 		textField = this.GetComponent<Text>();
 		FlashIndicator();
-
 	}
 
 	void AddText(char letterToAdd) {
@@ -67,5 +69,17 @@ public class KeyBoard : MonoBehaviour {
 
 	private void blink(string s) {
 		textField.text = textField.text.Length >= 1 ? textField.text.Substring(0, textField.text.Length - 1) + s : "|";
+	}
+
+	private void OnApplicationQuit() => Unsubscribe();
+	private void OnDisable() => Unsubscribe();
+	private void OnDestroy() => Unsubscribe();
+	private void Unsubscribe() {
+		EventSystem.onButtonPressed -= AddText;
+		EventSystem.onClearKeyboard -= deleteKeyboardText;
+		EventSystem.onChangeColorCorrect -= changeCorrectMaterial;
+		EventSystem.onTypedError -= changeWrongMaterial;
+		EventSystem.onBackspace -= Backspace;
+		EventSystem.onSwtichInputMethod -= resetTextField;
 	}
 }

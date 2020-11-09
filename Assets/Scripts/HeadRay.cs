@@ -28,7 +28,7 @@ public class HeadRay : MonoBehaviour
 
         if (CurrentButtonHower != null && other.tag == "Hand")
         {
-            HitButton();
+            //HitButton();
         }
     }
 
@@ -52,11 +52,13 @@ public class HeadRay : MonoBehaviour
     private void HitButton()
     {
 
-        if (CurrentButtonHower.GetComponent<ButtonBehavior>())
+        if (CurrentButtonHower && CurrentButtonHower.GetComponent<ButtonBehavior>())
         {
             LastButton = CurrentButtonHower;
             CurrentButtonHower.GetComponent<ButtonBehavior>().OnButtonDown();
-        }
+        } else {
+            EventSystem.onMissedButton();
+        }   
 
     }
 

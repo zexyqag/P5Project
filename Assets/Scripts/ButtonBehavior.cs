@@ -110,4 +110,11 @@ public class ButtonBehavior : MonoBehaviour
         this.transform.parent.localPosition = newPos;
     }
 
+    private void OnApplicationQuit() => Unsubscribe();
+    private void OnDisable() => Unsubscribe();
+    private void OnDestroy() => Unsubscribe();
+    private void Unsubscribe() {
+        EventSystem.onSetPos -= toDefault;
+        EventSystem.onSetPos -= setPositions;
+    }
 }

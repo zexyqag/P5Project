@@ -1678,7 +1678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4149749370005803617, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: TimeLeft
-      value: 60
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4149749370005803617, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: TimerEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
