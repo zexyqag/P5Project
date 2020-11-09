@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
+			ReversePlayerPrefBoolean();
 			SceneManager.LoadScene(0);
         }
     }
