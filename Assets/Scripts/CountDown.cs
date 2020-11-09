@@ -42,7 +42,7 @@ public class CountDown : MonoBehaviour {
 		TimerEnd.Invoke();
 
 		if(isDone) {
-			SceneManager.LoadScene(0);
+			SceneManager.LoadScene(2);
 		}
 
 		isDone = true;
