@@ -21,8 +21,8 @@ public class KeyBoard : MonoBehaviour
 
 		EventSystem.onButtonPressed += AddText;
 		EventSystem.onClearKeyboard += deleteKeyboardText;
-		EventSystem.onChangeColorCorrect += changeCorrectMaterial;
-		EventSystem.onTypedError += changeWrongMaterial;
+		EventSystem.onChangeColorCorrect += ChangeToCorrectMaterial;
+		EventSystem.onTypedError += ChangeToWrongMaterial;
 		EventSystem.onBackspace += Backspace;
 		EventSystem.onSwtichInputMethod += resetTextField;
 	}
@@ -34,42 +34,56 @@ public class KeyBoard : MonoBehaviour
 	}
 	#endregion
 
-	void AddText(char letterToAdd) 
-	{
-		textField.text = textField.text.Substring(0, textField.text.Length - 1); // Substring is used to devide the string in the textfield from the start til the end minus 1
-		textField.text += letterToAdd;
-		EventSystem.onValidateSentence(textField.text);
-		textField.text += "|";
-	}
+	#region Change Materials of textfield
 
-	void changeCorrectMaterial() {
+	void ChangeToCorrectMaterial()
+	{
 		textField.color = corretColer;
 	}
 
-	void changeWrongMaterial(char _) {
+	void ChangeToWrongMaterial(char _)
+	{ // Char as descrete perameter becouse of the event, but it is not used in this function, therefor "_"
 		textField.color = wrongColor;
 	}
+	#endregion
 
-	[ContextMenu("Backspace")]
-	void Backspace() {
-		if(textField.text.Length >= 2) {
-			textField.text = textField.text.Substring(0, textField.text.Length - 2) + "|";
+	#region Add and Remove text
+
+	void AddText(char letterToAdd)
+	{
+		textField.text = textField.text.Substring(0, textField.text.Length - 1);    // Substring is used to devide the string in the textfield from the start til the end minus 1
+		textField.text += letterToAdd;                                              // Adds the newly typed letter to the text field string
+		EventSystem.onValidateSentence(textField.text);                             // Invokes the event to validate the sentence
+		textField.text += "|";
+	}
+
+	void Backspace()
+	{
+		if (textField.text.Length >= 2)
+		{                                                   // Only if the length of the textfield is 2 or more, should the backspace delete
+			textField.text = textField.text.Substring(0, textField.text.Length - 2) + "|";  // Delete the last 2 elements, one is the letter to delete, the other is the blinking indicator
 		}
 	}
 
-	void FlashIndicator() {
-		StartCoroutine(WaitforTime(0.5f));
+	private void deleteKeyboardText()
+	{
+		textField.text = ""; // Sets the intire text field string to empty
 	}
 
-	private void deleteKeyboardText() {
-		textField.text = "";
+	private void resetTextField()
+	{
+		textField.text = "|"; // Adds the "|" needed for the Flash indicator
+	}
+	#endregion
+
+	#region Blincking FlashIndicator
+	void FlashIndicator()
+	{
+		StartCoroutine(WaitforTime(0.5f)); // starts a countdown
 	}
 
-	private void resetTextField() {
-		textField.text = "|";
-	}
-
-	IEnumerator WaitforTime(float timeToWait) {
+	IEnumerator WaitforTime(float timeToWait) 
+	{
 		yield return new WaitForSeconds(timeToWait);
 		blink(" ");
 
@@ -78,19 +92,25 @@ public class KeyBoard : MonoBehaviour
 		FlashIndicator();
 	}
 
-	private void blink(string s) {
+	private void blink(string s)
+	{
 		textField.text = textField.text.Length >= 1 ? textField.text.Substring(0, textField.text.Length - 1) + s : "|";
 	}
 
+	#endregion
+
+	#region Unsubscribe
 	private void OnApplicationQuit() => Unsubscribe();
 	private void OnDisable() => Unsubscribe();
 	private void OnDestroy() => Unsubscribe();
-	private void Unsubscribe() {
+	private void Unsubscribe()
+	{
 		EventSystem.onButtonPressed -= AddText;
 		EventSystem.onClearKeyboard -= deleteKeyboardText;
-		EventSystem.onChangeColorCorrect -= changeCorrectMaterial;
-		EventSystem.onTypedError -= changeWrongMaterial;
+		EventSystem.onChangeColorCorrect -= ChangeToCorrectMaterial;
+		EventSystem.onTypedError -= ChangeToWrongMaterial;
 		EventSystem.onBackspace -= Backspace;
 		EventSystem.onSwtichInputMethod -= resetTextField;
 	}
+	#endregion
 }
