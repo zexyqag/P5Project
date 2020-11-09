@@ -4,85 +4,86 @@ using UnityEngine;
 using System;
 
 public class ButtonBehavior : MonoBehaviour
+     //This script handels the visual and backend interactions of a button
 {
     #region Public fields
-    public char Letter;
-    public GameObject LetterText;
+    public char Letter;                         // The charrecter represinting the letter of the button
+    public GameObject TextObject;               // A 3D text gameobject used to desplay the letter of the button
+   
+    public Material HowerMaterial;              // Material of the button when it is howerd over
+    public Material DefaultMaterial;            // Material of the button when it is not howerd over of pressed
+    public Material PressdownMaterial;          // Material of the button when it is pressed
 
-    public Material MatHower;
-    public Material MatDefault;
-    public Material MatPress;
+    public Vector3 DefoultPosition;             // The initial position of the button, and the position it will retun to after moving
 
-    public Vector3 PosDefoult;
-    private Vector3 PosHower;
-    private Vector3 PosPress;
-
-    public bool isPressDown;
-
-    public AudioPlayer audioPlayer;
+    public AudioPlayer audioPlayer;             // The global audio payer used for handeling sound
     #endregion
 
-    private bool isHover;
+    #region Private Fields
+    private Vector3 HoverOverPosition;          // The position of the button when it is hoverd over, in relation to the defoult position
+    private Vector3 PressDownPosition;          // The position of the button when it is pressed down, in relation to the defoult position
 
+    private bool isHover;                       // A boolean indicating weather or not the button icurrently being hover over
+    private bool isThisPressedDown;             // A boolean indicating weather or not the button icurrently being pressed
+    #endregion
 
+    #region Unity Functions
     private void Start()
     {
-        EventSystem.onSetPos += toDefault;
-        EventSystem.onSetPos += setPositions;
-        toDefault();
-        setPositions();
-        isPressDown = false;
-    }
+        EventSystem.onSetPos += SetPositions;     
+        
+        SetPositions();
 
-    private void toDefault()
-    {
-        LetterText.GetComponent<TextMesh>().text = Letter.ToString();
-        ChangeMaterial(MatDefault);
+        isThisPressedDown = false;
     }
+    #endregion
 
-    private void setPositions()
+    private void SetPositions()
     {
-        PosDefoult = this.transform.parent.localPosition;
-        PosHower = PosDefoult + new Vector3(0,0, -0.03f);
-        PosPress = PosDefoult + new Vector3(0, 0, 0.03f);
+        TextObject.GetComponent<TextMesh>().text = Letter.ToString();       // Sets the text component of the 3D text object to the letter char
+        ChangeMaterial(DefaultMaterial);
+
+        DefoultPosition = this.transform.parent.localPosition;              // Sets the defoult position to the current position of the button
+        HoverOverPosition = DefoultPosition + new Vector3(0,0, -0.03f);     // Sets the hover ower and press down postion based on the defoult position
+        PressDownPosition = DefoultPosition + new Vector3(0, 0, 0.03f);
+
     }
 
     public void OnButtonDown()
     {
-        if(Letter == '<') {
-            EventSystem.onBackspace();
-        } else {
-            EventSystem.onButtonPressed(Letter);
-        }
+        if (Letter == '<') { EventSystem.onBackspace(); } else { EventSystem.onButtonPressed(Letter); } // Checks if the letter input is backspace and invokes the corect event
+
         audioPlayer.playAudio();
-        MoveButton(PosPress);
-        ChangeMaterial(MatPress);
-        isPressDown = true;
+        MoveButton(PressDownPosition);
+        ChangeMaterial(PressdownMaterial);
+        isThisPressedDown = true;
     }
 
     public void OnButtonUP()
     {
         if (isHover)
         {
-            ChangeMaterial(MatHower);
-            MoveButton(PosHower);
+            ChangeMaterial(HowerMaterial);
+            MoveButton(HoverOverPosition);
         }
         else
         {
-            ChangeMaterial(MatDefault);
-            MoveButton(PosDefoult);
+            ChangeMaterial(DefaultMaterial);
+            MoveButton(DefoultPosition);
         }
-        isPressDown = false;
+
+        isThisPressedDown = false;
 
     }
 
     public void HowerOver()
     {
-        if (!isHover && !isPressDown)
+        if (!isHover && !isThisPressedDown)
         {
-            ChangeMaterial(MatHower);
-            MoveButton(PosHower);
+            ChangeMaterial(HowerMaterial);
+            MoveButton(HoverOverPosition);
         }
+
         isHover = true;
     }
 
@@ -90,10 +91,10 @@ public class ButtonBehavior : MonoBehaviour
     {
         isHover = false;
 
-        if (!isPressDown)
+        if (!isThisPressedDown)
         {
-            ChangeMaterial(MatDefault);
-            MoveButton(PosDefoult);
+            ChangeMaterial(DefaultMaterial);
+            MoveButton(DefoultPosition);
         }
         
     }
@@ -114,7 +115,6 @@ public class ButtonBehavior : MonoBehaviour
     private void OnDisable() => Unsubscribe();
     private void OnDestroy() => Unsubscribe();
     private void Unsubscribe() {
-        EventSystem.onSetPos -= toDefault;
-        EventSystem.onSetPos -= setPositions;
+        EventSystem.onSetPos -= SetPositions;
     }
 }
