@@ -3,11 +3,12 @@
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : MonoBehaviour {
 
-	#region Private 
+	#region Private fields
 	private AudioSource audioSource;
 	[SerializeReference] private enAudio audioToPlay = enAudio.MissingAudio;
 	#endregion
 
+	#region Unity fields
 	//Save references to dependent components
 	private void Awake() {
 		audioSource = GetComponent<AudioSource>();
@@ -17,9 +18,10 @@ public class AudioPlayer : MonoBehaviour {
 	private void Start() {
 		audioSource.clip = SoundManager.Instance.getAudio(audioToPlay);
 	}
+	#endregion
 
 	/// <summary>
-	/// Play audio 
+	/// Play the audio assigend
 	/// </summary>
 	public void playAudio() {
 		if(audioSource.isPlaying) {

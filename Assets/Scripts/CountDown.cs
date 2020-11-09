@@ -64,10 +64,6 @@ public class CountDown : MonoBehaviour {
 
 	}
 
-	private void OnApplicationQuit() => Unsubscribe();
-	private void OnDisable() => Unsubscribe();
-	private void OnDestroy() => Unsubscribe();
-
 	/// <summary>
 	/// Unsubscribes the methods in this script from the EventSystem
 	/// </summary>
