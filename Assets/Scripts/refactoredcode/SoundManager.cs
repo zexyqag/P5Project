@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-[Serializable] public enum enAudio { Correct, Wrong, KeyboardClick, Miss };
+[Serializable] public enum enAudio { Correct, Wrong, KeyboardClick, Miss, MissingAudio };
 public class SoundManager : MonoBehaviour {
 
 	#region Private Var

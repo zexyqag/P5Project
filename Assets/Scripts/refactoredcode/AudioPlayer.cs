@@ -1,22 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : MonoBehaviour {
+
+	#region Private 
 	private AudioSource audioSource;
-	[SerializeReference] private enAudio audioToPlay;
+	[SerializeReference] private enAudio audioToPlay = enAudio.MissingAudio;
+	#endregion
+
+	//Save references to dependent components
 	private void Awake() {
 		audioSource = GetComponent<AudioSource>();
 	}
+
+	//Get audio clip to play from sound manager singelton
 	private void Start() {
-		/*if (audioToPlay) {
-			Debug.LogWarning(this.ToString() + "No audio selected");
-		}*/
 		audioSource.clip = SoundManager.Instance.getAudio(audioToPlay);
 	}
 
-	[ContextMenu("playAudio")]
+	/// <summary>
+	/// Play audio 
+	/// </summary>
 	public void playAudio() {
 		if(audioSource.isPlaying) {
 			audioSource.Stop();
@@ -24,6 +28,9 @@ public class AudioPlayer : MonoBehaviour {
 		audioSource.PlayOneShot(SoundManager.Instance.getAudio(audioToPlay));
 	}
 
+	/// <summary>
+	/// Play audio corresponding to SoundManager based on enAduio Enum int
+	/// </summary>
 	public void playAudio(int audioToPlay) {
 		if(audioSource.isPlaying) {
 			audioSource.Stop();
