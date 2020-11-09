@@ -3,17 +3,17 @@ using UnityEngine.Events;
 
 public class StringMatchChecker : MonoBehaviour {
 
-	#region Public var
+	#region Public fields
 	public UnityEvent onStringMatch, onCharacterError;	
 	#endregion
 
-	#region Private var
+	#region Private fields
 	private string stringToMatch = string.Empty;
 	private int currentStringElement = 0, lastCorrectElement = 0;
 	private bool isAnyLetterIncorrect = false;
 	#endregion
 
-
+	#region Unity fields
 	private void Awake() {
 		EventSystem.onButtonPressed += checkCharacterForMatch;
 		EventSystem.onValidateSentence += checkStringForMatch;
@@ -22,6 +22,11 @@ public class StringMatchChecker : MonoBehaviour {
 		EventSystem.onBackspace += backspace;
 		EventSystem.onResetStringMatchChecker += resetProgress;
 	}
+	private void OnApplicationQuit() => Unsubscribe();
+	private void OnDisable() => Unsubscribe();
+	private void OnDestroy() => Unsubscribe();
+
+	#endregion
 
 	/// <summary>
 	/// Resets the progress of the StringMatchChecker making it ready for a new string.
@@ -33,7 +38,7 @@ public class StringMatchChecker : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Sets the string to match to a new string.
+	/// Sets the string to match to the string provided as parameter.
 	/// </summary>
 	private void updateStringToMatch(string s) {
 		stringToMatch = s.ToUpper();
@@ -74,7 +79,7 @@ public class StringMatchChecker : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Updates the currentStringElemnt...
+	/// Updates the currentStringElemnt to match when pressing backspace
 	/// </summary>
 	void backspace() {
 		if(currentStringElement > 0) {
@@ -90,10 +95,6 @@ public class StringMatchChecker : MonoBehaviour {
 			}
 		}
 	}
-
-	private void OnApplicationQuit() => Unsubscribe();
-	private void OnDisable() => Unsubscribe();
-	private void OnDestroy() => Unsubscribe();
 
 	/// <summary>
 	/// Unsubscribes the methods in this script from the EventSystem

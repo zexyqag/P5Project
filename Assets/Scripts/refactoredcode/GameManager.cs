@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using Valve.VR.InteractionSystem;
 
 public class GameManager : MonoBehaviour {
 
@@ -51,7 +47,7 @@ public class GameManager : MonoBehaviour {
 
 	void ReversePlayerPrefBoolean()
     {
-        if (PlayerPrefs.GetInt("StartWithHeadHand") == 1) { PlayerPrefs.SetInt("StartWithHeadHand", 0); } else { PlayerPrefs.SetInt("StartWithHeadHand", 1); }  // switches the state of StartWithHeadHand between 1 and 0
+		PlayerPrefs.SetInt("StartWithHeadHand", PlayerPrefs.GetInt("StartWithHeadHand") == 1 ? 0 : 1); // switches the state of StartWithHeadHand between 1 and 0
 	}
 
 	public void SwitchPlayerVariants()
