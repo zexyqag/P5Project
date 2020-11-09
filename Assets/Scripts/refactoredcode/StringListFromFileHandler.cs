@@ -29,17 +29,24 @@ public class StringListFromFileHandler : MonoBehaviour {
 		}
 	}
 
+	//Get nessesary refrence to game componets and initialize the string list
 	private void Start() {
 		textField = GetComponent<Text>();
 		Initialize();
 	}
 
+	/// <summary>
+	/// Shuffles the list, resets the index to zero, and calls nextText()
+	/// </summary>
 	private void Initialize() {
 		phraseIndex = 0;
 		phrasesToWriteStringList.Shuffle();
 		nextText();
 	}
 
+	/// <summary>
+	/// Updates the current string to match with the next string from the string list, index exceeds string list length Initialize is called before trying again.
+	/// </summary>
 	[ContextMenu("nextText()")]
 	public void nextText() {
 		if(phraseIndex >= phrasesToWriteStringList.Count) {
@@ -55,6 +62,10 @@ public class StringListFromFileHandler : MonoBehaviour {
 	private void OnApplicationQuit() => Unsubscribe();
 	private void OnDisable() => Unsubscribe();
 	private void OnDestroy() => Unsubscribe();
+
+	/// <summary>
+	/// Unsubscribes the methods in this script from the EventSystem
+	/// </summary>
 	private void Unsubscribe() {
 		EventSystem.onNextString -= nextText;
 	}

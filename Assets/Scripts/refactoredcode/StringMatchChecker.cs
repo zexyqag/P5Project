@@ -1,15 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class StringMatchChecker : MonoBehaviour {
 
 	#region Public var
-	public UnityEvent onStringMatch, onCharacterError;
+	public UnityEvent onStringMatch, onCharacterError;	
 	#endregion
 
 	#region Private var
-	private string stringToMatch = "";
+	private string stringToMatch = string.Empty;
 	private int currentStringElement = 0, lastCorrectElement = 0;
 	private bool isAnyLetterIncorrect = false;
 	#endregion
@@ -24,16 +23,25 @@ public class StringMatchChecker : MonoBehaviour {
 		EventSystem.onResetStringMatchChecker += resetProgress;
 	}
 
+	/// <summary>
+	/// Resets the progress of the StringMatchChecker making it ready for a new string.
+	/// </summary>
 	private void resetProgress() {
 		currentStringElement = 0;
 		lastCorrectElement = 0;
 		isAnyLetterIncorrect = false;
 	}
 
+	/// <summary>
+	/// Sets the string to match to a new string.
+	/// </summary>
 	private void updateStringToMatch(string s) {
 		stringToMatch = s.ToUpper();
 	}
 
+	/// <summary>
+	/// Checks whether or not the stringToMatch string matches with the string provided as a parameter.
+	/// </summary>
 	public void checkStringForMatch(string s) {
 		if(stringToMatch.Equals(s)) {
 			EventSystem.onClearKeyboard();
@@ -43,6 +51,9 @@ public class StringMatchChecker : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Checks whether or not the current character matches with the character provided as a parameter
+	/// </summary>
 	public void checkCharacterForMatch(char c) {
 		if(stringToMatch.Length > currentStringElement) {
 			if(stringToMatch[currentStringElement].Equals(c)) {
@@ -62,8 +73,9 @@ public class StringMatchChecker : MonoBehaviour {
 		++currentStringElement;
 	}
 
-
-
+	/// <summary>
+	/// Updates the currentStringElemnt...
+	/// </summary>
 	void backspace() {
 		if(currentStringElement > 0) {
 			--currentStringElement;
@@ -77,5 +89,21 @@ public class StringMatchChecker : MonoBehaviour {
 				EventSystem.onChangeColorCorrect();
 			}
 		}
+	}
+
+	private void OnApplicationQuit() => Unsubscribe();
+	private void OnDisable() => Unsubscribe();
+	private void OnDestroy() => Unsubscribe();
+
+	/// <summary>
+	/// Unsubscribes the methods in this script from the EventSystem
+	/// </summary>
+	private void Unsubscribe() {
+		EventSystem.onButtonPressed -= checkCharacterForMatch;
+		EventSystem.onValidateSentence -= checkStringForMatch;
+		EventSystem.onSwtichInputMethod -= resetProgress;
+		EventSystem.onUpdateStringToMatch -= updateStringToMatch;
+		EventSystem.onBackspace -= backspace;
+		EventSystem.onResetStringMatchChecker -= resetProgress;
 	}
 }

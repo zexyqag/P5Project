@@ -1,25 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyboardPlacer : MonoBehaviour {
+
+	#region	Public fields
 	public List<GameObject> keys;
-	public float Size;
-	public float Spacing;
+	public float Size, Spacing;
 	public GameObject SpaceBar, BackSpace;
 	public Vector3 startPosition;
 	public Transform keyboard;
+	#endregion
 
-
-	private void Start() {
-		
-	}
-
+	/// <summary>
+	/// Scale the keyboard to have the correct spacing and key size
+	/// </summary>
 	void Scale() {
 		Spacing = Spacing / 1000;
 		Size = Size / 1000;
 
-		foreach (GameObject gameObject in keys) {
+		foreach(GameObject gameObject in keys) {
 			gameObject.SetActive(true);
 			gameObject.transform.localScale = new Vector3(1, 1, 1);
 			gameObject.transform.localScale *= Size;
@@ -35,12 +34,15 @@ public class KeyboardPlacer : MonoBehaviour {
 		BackSpace.SetActive(true);
 	}
 
+	/// <summary>
+	/// Place the keyboard rows and auxiliary keys with the correct sapceing
+	/// </summary>
 	[ContextMenu("place")]
 	public void Place() {
 
 		Scale();
 
-		for (int i = 0; i < 10; i++) // top row
+		for(int i = 0; i < 10; i++) // top row
 		{
 			Vector3 newPos = new Vector3(startPosition.x + ((Spacing + Size) * i), startPosition.y, startPosition.z);
 			keys[i].transform.localPosition = newPos;
@@ -59,7 +61,7 @@ public class KeyboardPlacer : MonoBehaviour {
 			keys[i + 19].transform.localPosition = newPos;
 		}
 
-		SpaceBar.transform.localPosition = new Vector3(startPosition.x + (((Spacing + Size) * 7) + 0.1f)/2, startPosition.y - (Spacing + Size) * 3, startPosition.z);
+		SpaceBar.transform.localPosition = new Vector3(startPosition.x + (((Spacing + Size) * 7) + 0.1f) / 2, startPosition.y - (Spacing + Size) * 3, startPosition.z);
 		BackSpace.transform.localPosition = new Vector3(startPosition.x + ((Spacing + Size) * 8) + 0.05f, startPosition.y - (Spacing + Size) * 3 + 0.050f, startPosition.z);
 	}
 
@@ -67,8 +69,6 @@ public class KeyboardPlacer : MonoBehaviour {
 		Vector3 pos1 = keyboard.position, pos2 = keyboard.position + (Vector3.right * (Spacing / 1000 + Size / 1000) * 9);
 		Gizmos.DrawSphere(pos1, 0.05f);
 		Gizmos.DrawSphere(pos2, 0.05f);
-		Gizmos.DrawLine(pos1, pos2);
-		//Gizmos.DrawSphere(startPosition + (Vector3.right * ((Spacing + size) * i), 0.01f);
 	}
 
 }

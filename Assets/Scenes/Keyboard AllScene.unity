@@ -965,6 +965,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9189501636796922357, guid: f782f51bc9025524581539d34ea678a3, type: 3}
   m_PrefabInstance: {fileID: 1060610923}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1060610956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9189501635866262600, guid: f782f51bc9025524581539d34ea678a3, type: 3}
+  m_PrefabInstance: {fileID: 1060610923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ff649b7fe389e45a42591bc47af6c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &1070520438
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1578,7 +1589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4072849142634668521, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: onStart.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4072849142634668521, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: PlayerVariants.Array.size
@@ -1678,7 +1689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4149749370005803617, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: TimeLeft
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4149749370005803617, guid: 51f45db842b92434b910b9d8a39a4069, type: 3}
       propertyPath: TimerEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1884,6 +1895,18 @@ MonoBehaviour:
       - m_Target: {fileID: 420404938}
         m_TargetAssemblyTypeName: DataSaver, Assembly-CSharp
         m_MethodName: ReadyUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1060610956}
+        m_TargetAssemblyTypeName: StringListFromFileHandler, Assembly-CSharp
+        m_MethodName: nextText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

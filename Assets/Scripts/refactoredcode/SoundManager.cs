@@ -12,13 +12,17 @@ public class SoundManager : MonoBehaviour {
 	#endregion
 
 	private void Awake() {
-		if (Instance == null) {
+		if (Instance == null) { //Singelton pattern
 			Instance = this;
 		} else {
 			Destroy(this);
 		}
 	}
+	
 
+	/// <summary>
+	/// Gets the audio asiggend to the corosponedening SoundManager singelton
+	/// </summary>
 	public AudioClip getAudio(enAudio audioToPlay) {
 		if(audioToPlay == enAudio.Correct) {
 			return Correct;
