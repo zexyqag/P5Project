@@ -36,7 +36,16 @@ public class GameManager : MonoBehaviour {
 		onStart.Invoke();
 	}
 
-	void ReversePlayerPrefBoolean()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+			ReversePlayerPrefBoolean();
+			SceneManager.LoadScene(0);
+        }
+    }
+
+    void ReversePlayerPrefBoolean()
     {
         if (PlayerPrefs.GetInt("StartWithHeadHand") == 1)
         {
