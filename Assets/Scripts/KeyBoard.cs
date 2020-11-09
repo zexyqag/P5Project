@@ -4,12 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class KeyBoard : MonoBehaviour {
+public class KeyBoard : MonoBehaviour 
+{
 
-	private Text textField;
+	#region Public Fields
 	public Color corretColer = Color.green, wrongColor = Color.red;
+	#endregion
 
-	private void Awake() {
+	#region Private Fields
+	private Text textField;
+	#endregion
+
+	#region Unity Functions
+	private void Awake()
+	{// Awake happens before start, this functions subscripe to all relevant events
+
 		EventSystem.onButtonPressed += AddText;
 		EventSystem.onClearKeyboard += deleteKeyboardText;
 		EventSystem.onChangeColorCorrect += changeCorrectMaterial;
@@ -18,14 +27,16 @@ public class KeyBoard : MonoBehaviour {
 		EventSystem.onSwtichInputMethod += resetTextField;
 	}
 
-	private void Start() {
-		textField = this.GetComponent<Text>();
+	private void Start()
+	{
+		textField = this.GetComponent<Text>();	// Defines textField as the Text of this
 		FlashIndicator();
 	}
+	#endregion
 
-	void AddText(char letterToAdd) {
-
-		textField.text = textField.text.Substring(0, textField.text.Length - 1);
+	void AddText(char letterToAdd) 
+	{
+		textField.text = textField.text.Substring(0, textField.text.Length - 1); // Substring is used to devide the string in the textfield from the start til the end minus 1
 		textField.text += letterToAdd;
 		EventSystem.onValidateSentence(textField.text);
 		textField.text += "|";
