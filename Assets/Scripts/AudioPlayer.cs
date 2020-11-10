@@ -4,8 +4,8 @@
 public class AudioPlayer : MonoBehaviour {
 
 	#region Private fields
-	private AudioSource audioSource;
-	[SerializeReference] private enAudio audioToPlay = enAudio.MissingAudio;
+	private AudioSource audioSource = null; //The audio clip to play
+	[SerializeReference] private enAudio audioToPlay = enAudio.MissingAudio; //This enum dictates which sound to play, defaults to MissingAudio if none is specified in the inspector
 	#endregion
 
 	#region Unity fields
@@ -21,7 +21,7 @@ public class AudioPlayer : MonoBehaviour {
 	#endregion
 
 	/// <summary>
-	/// Play the audio assigend
+	/// Play the assigend audio clip
 	/// </summary>
 	public void playAudio() {
 		if(audioSource.isPlaying) {
@@ -31,7 +31,7 @@ public class AudioPlayer : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Play audio corresponding to SoundManager based on enAduio Enum int
+	/// Play an audio clip corresponding to SoundManager based on enAduio Enum int
 	/// </summary>
 	public void playAudio(int audioToPlay) {
 		if(audioSource.isPlaying) {
