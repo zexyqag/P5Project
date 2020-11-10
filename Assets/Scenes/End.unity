@@ -546,8 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4158597230612222030, guid: a9a47d2a482839d459620706a561a090, type: 3}
       propertyPath: m_Text
-      value: Thanks for helping us test, you may now take off the head mounted display
-        and have a very nice day! :)
+      value: Thanks for helping us test! You can take off the headset now.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9a47d2a482839d459620706a561a090, type: 3}
