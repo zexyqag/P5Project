@@ -724,10 +724,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4158597230612222030, guid: a9a47d2a482839d459620706a561a090, type: 3}
       propertyPath: m_Text
-      value: Welcome to our test, as you know you will test two input methods for
-        a VR keyboard. Before you start please look down and stand on top of the
-        indicator you see on the ground then touch the start cube and avoid moving
-        from this position.
+      value: Welcome to our test, you will test two input methods for a VR keyboard.
+        Please stand on the green indicator on the ground and avoid moving from this
+        position. Touch the start cube to continue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9a47d2a482839d459620706a561a090, type: 3}

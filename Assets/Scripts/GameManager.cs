@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
@@ -9,7 +10,9 @@ public class GameManager : MonoBehaviour {
 	public List<Transform> playerVariants;		// A list for storing the two different player variants (HeadHand && RayCast)
 	public List<Vector2> keyboards;				// A list for storing the two different keyboard size perameters (x = Size, y = Spacing)
 
-	public bool StartWithHeadHand;				// Boolean used for determaning if the test starts with HeadHand
+	public bool StartWithHeadHand;              // Boolean used for determaning if the test starts with HeadHand
+
+	public UnityEvent readyUp;
 
 	#endregion
 
@@ -42,7 +45,14 @@ public class GameManager : MonoBehaviour {
 			ReversePlayerPrefBoolean();		// Switch the next player variant
 			SceneManager.LoadScene(0);		// Load the start scene
         }
-    }
+
+		if(Input.GetKeyDown(KeyCode.S)) // If R is pressed on the keyboard
+		{
+			readyUp.Invoke();
+			EventSystem.onClearKeyboard();
+			EventSystem.onResetStringMatchChecker();
+		}
+	}
 	#endregion
 
 	void ReversePlayerPrefBoolean()
