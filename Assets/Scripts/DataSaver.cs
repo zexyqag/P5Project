@@ -11,6 +11,8 @@ public class DataSaver : MonoBehaviour {
 	private FileInfo dataFile = null;
 	#endregion
 
+	public bool isDebuging = false;
+
 	private void Awake() {
 		EventSystem.onTypedCorrect += onTypedCorrect;
 		EventSystem.onTypedError += addTotalError;
@@ -32,9 +34,7 @@ public class DataSaver : MonoBehaviour {
 	/// Log when user missed a key
 	/// </summary>
 	private void onMissedButton() {
-		if(isTestStarted) {
-			logAction("MISSED;0;0");
-		}
+		logAction("MISSED;0;0");
 	}
 
 	/// <summary>
@@ -66,18 +66,14 @@ public class DataSaver : MonoBehaviour {
 	/// Loggs when the user presses an incorrect keystroke 
 	/// </summary>
 	public void addTotalError(char c) {
-		if(isTestStarted) {
-			logAction(c.ToString() + ";0;1");
-		}
+		logAction(c.ToString() + ";0;1");
 	}
 
 	/// <summary>
 	/// Loggs when the user presses an correct keystroke 
 	/// </summary>
 	public void onTypedCorrect(char c) {
-		if(isTestStarted) {
-			logAction(c.ToString() + ";1;0");
-		}
+		logAction(c.ToString() + ";1;0");
 	}
 
 	/// <summary>
@@ -108,10 +104,11 @@ public class DataSaver : MonoBehaviour {
 	/// Logs and action as a new line with test type and time stamp
 	/// </summary>
 	private void logAction(string action) {
-		if(writer.BaseStream != null) {
+		if (isDebuging)
+			Debug.Log(action);
+
+		if(writer.BaseStream != null && isTestStarted) {
 			writer.WriteLine(testName + ";" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ";" + action);
-		} else {
-			Debug.Log("StreamWriter is closed");
 		}
 	}
 
