@@ -51,7 +51,7 @@ public class StringMatchChecker : MonoBehaviour {
 		if(stringToMatch.Equals(s)) {
 			EventSystem.onClearKeyboard();
 			EventSystem.onNextString();
-			currentStringElement = 0;
+			resetProgress();
 			onStringMatch.Invoke();
 		}
 	}
@@ -60,6 +60,7 @@ public class StringMatchChecker : MonoBehaviour {
 	/// Checks whether or not the current character matches with the character provided as a parameter
 	/// </summary>
 	public void checkCharacterForMatch(char c) {
+		Debug.Log($"currentStringElement: {currentStringElement}, lastCorrectElement: {lastCorrectElement}");
 		if(stringToMatch.Length > currentStringElement) {
 			if(stringToMatch[currentStringElement].Equals(c)) {
 				EventSystem.onTypedCorrect(c);
