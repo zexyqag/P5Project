@@ -57,8 +57,9 @@ public class StringMatchChecker : MonoBehaviour {
 		if(stringToMatch.Equals(s)) {
 			EventSystem.onClearKeyboard();
 			EventSystem.onNextString();
-			resetProgress();
 			onStringMatch.Invoke();
+			resetProgress();
+			--currentStringElement;
 		}
 	}
 
@@ -109,7 +110,7 @@ public class StringMatchChecker : MonoBehaviour {
 	/// </summary>
 	private void Unsubscribe() {
 		EventSystem.onButtonPressed -= checkCharacterForMatch;
-		EventSystem.onValidateSentence -= checkStringForMatch;
+		EventSystem.onValidateSentence -= setInputTextFieldString;
 		EventSystem.onSwtichInputMethod -= resetProgress;
 		EventSystem.onUpdateStringToMatch -= updateStringToMatch;
 		EventSystem.onBackspace -= backspace;
