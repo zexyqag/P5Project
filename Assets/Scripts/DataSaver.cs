@@ -9,6 +9,7 @@ public class DataSaver : MonoBehaviour {
 	private bool isTestStarted = false, isReady = false;
 	private DirectoryInfo dataDirectory = null;
 	private FileInfo dataFile = null;
+	private long previousLogTime = 0;
 	#endregion
 
 	public bool isDebuging = false;
@@ -19,7 +20,6 @@ public class DataSaver : MonoBehaviour {
 		EventSystem.onBackspace += addBackspace;
 		EventSystem.onTestType += TestType;
 		EventSystem.onSwtichInputMethod += endTest;
-		EventSystem.onButtonPressed += startTest;
 		EventSystem.onMissedButton += onMissedButton;
 
 
@@ -82,17 +82,6 @@ public class DataSaver : MonoBehaviour {
 	private void addBackspace() => logAction("BACKSPACE;0;0");
 
 	/// <summary>
-	/// Starts the test when user presses a keyboard key if the data saver is ready
-	/// </summary>
-	private void startTest(char c) {
-		if(!isReady || isTestStarted)
-			return;
-
-		isTestStarted = true;
-		OpenWriter();
-	}
-
-	/// <summary>
 	/// Stops the data saver from logging 
 	/// </summary>
 	private void endTest() {
@@ -104,12 +93,19 @@ public class DataSaver : MonoBehaviour {
 	/// Logs and action as a new line with test type and time stamp
 	/// </summary>
 	private void logAction(string action) {
-		if (isDebuging)
-			Debug.Log(action);
-
-		if(writer.BaseStream != null && isTestStarted) {
-			writer.WriteLine(testName + ";" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + ";" + action);
+		if(isReady && !isTestStarted) {
+			isTestStarted = true;
+			OpenWriter();
+			previousLogTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 		}
+
+		if(isTestStarted) {
+			writer?.WriteLine($"{testName};{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - previousLogTime};{action}");
+			previousLogTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+		}
+
+		if(isDebuging)
+			Debug.Log($"{testName};{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - previousLogTime};{action}");
 	}
 
 	private void OnApplicationQuit() {
@@ -144,7 +140,6 @@ public class DataSaver : MonoBehaviour {
 		EventSystem.onBackspace -= addBackspace;
 		EventSystem.onTestType -= TestType;
 		EventSystem.onSwtichInputMethod -= endTest;
-		EventSystem.onButtonPressed -= startTest;
 		EventSystem.onMissedButton -= onMissedButton;
 	}
 }

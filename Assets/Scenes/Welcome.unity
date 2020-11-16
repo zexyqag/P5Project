@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 1572849958}
   - component: {fileID: 1572849957}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,7 +630,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.099999994}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1933882445}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1933882444
@@ -664,6 +664,7 @@ Transform:
   - {fileID: 4158597229482723775}
   - {fileID: 590433548}
   - {fileID: 1539657725}
+  - {fileID: 1572849960}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
