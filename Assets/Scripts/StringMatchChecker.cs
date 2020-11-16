@@ -23,10 +23,6 @@ public class StringMatchChecker : MonoBehaviour {
 		EventSystem.onBackspace += backspace;
 		EventSystem.onResetStringMatchChecker += resetProgress;
 	}
-	private void OnApplicationQuit() => Unsubscribe();
-	private void OnDisable() => Unsubscribe();
-	private void OnDestroy() => Unsubscribe();
-
 	#endregion
 
 	/// <summary>
@@ -104,10 +100,12 @@ public class StringMatchChecker : MonoBehaviour {
 		}
 	}
 
+	#region Unsubscrips
 	/// <summary>
 	/// Unsubscribes the methods in this script from the EventSystem
 	/// </summary>
-	private void Unsubscribe() {
+	private void Unsubscribe()
+	{
 		EventSystem.onButtonPressed -= checkCharacterForMatch;
 		EventSystem.onValidateSentence -= checkStringForMatch;
 		EventSystem.onSwtichInputMethod -= resetProgress;
@@ -115,4 +113,10 @@ public class StringMatchChecker : MonoBehaviour {
 		EventSystem.onBackspace -= backspace;
 		EventSystem.onResetStringMatchChecker -= resetProgress;
 	}
+
+	private void OnApplicationQuit() => Unsubscribe();
+	private void OnDisable() => Unsubscribe();
+	private void OnDestroy() => Unsubscribe();
+	#endregion
+
 }
