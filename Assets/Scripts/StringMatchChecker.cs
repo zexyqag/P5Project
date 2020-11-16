@@ -11,12 +11,13 @@ public class StringMatchChecker : MonoBehaviour {
 	private string stringToMatch = string.Empty;
 	private int currentStringElement = 0, lastCorrectElement = 0;
 	private bool isAnyLetterIncorrect = false;
+	private string InputTextFieldString;
 	#endregion
 
 	#region Unity fields
 	private void Awake() {
 		EventSystem.onButtonPressed += checkCharacterForMatch;
-		EventSystem.onValidateSentence += checkStringForMatch;
+		EventSystem.onValidateSentence += setInputTextFieldString;
 		EventSystem.onSwtichInputMethod += resetProgress;
 		EventSystem.onUpdateStringToMatch += updateStringToMatch;
 		EventSystem.onBackspace += backspace;
@@ -36,6 +37,11 @@ public class StringMatchChecker : MonoBehaviour {
 		lastCorrectElement = 0;
 		isAnyLetterIncorrect = false;
 	}
+
+	private void setInputTextFieldString(string s)
+    {
+		InputTextFieldString = s;
+    }
 
 	/// <summary>
 	/// Sets the string to match to the string provided as parameter.
@@ -66,6 +72,7 @@ public class StringMatchChecker : MonoBehaviour {
 
 				if(isAnyLetterIncorrect == false) {
 					lastCorrectElement = currentStringElement;
+					checkStringForMatch(InputTextFieldString);
 					EventSystem.onChangeColorCorrect();
 				}
 
