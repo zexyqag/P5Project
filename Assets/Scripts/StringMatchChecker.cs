@@ -4,11 +4,11 @@ using UnityEngine.Events;
 public class StringMatchChecker : MonoBehaviour {
 
 	#region Public fields
-	public UnityEvent onStringMatch, onCharacterError;	
+	public UnityEvent onStringMatch, onCharacterError;
 	#endregion
 
 	#region Private fields
-	private string stringToMatch = string.Empty;
+	private string stringToMatch = string.Empty, stringProgress = string.Empty;
 	private int currentStringElement = 0, lastCorrectElement = 0;
 	private bool isAnyLetterIncorrect = false;
 	private string InputTextFieldString;
@@ -16,8 +16,8 @@ public class StringMatchChecker : MonoBehaviour {
 
 	#region Unity fields
 	private void Awake() {
-		EventSystem.onButtonPressed += checkCharacterForMatch;
-		EventSystem.onValidateSentence += setInputTextFieldString;
+		EventSystem.onValidateCharacter += checkCharacterForMatch;
+		EventSystem.onValidateSentence += checkStringForMatch;
 		EventSystem.onSwtichInputMethod += resetProgress;
 		EventSystem.onUpdateStringToMatch += updateStringToMatch;
 		EventSystem.onBackspace += backspace;
@@ -32,12 +32,7 @@ public class StringMatchChecker : MonoBehaviour {
 		currentStringElement = 0;
 		lastCorrectElement = 0;
 		isAnyLetterIncorrect = false;
-	}
-
-	private void setInputTextFieldString(string s)
-    {
-		InputTextFieldString = s;
-    }
+	}	
 
 	/// <summary>
 	/// Sets the string to match to the string provided as parameter.
@@ -51,11 +46,10 @@ public class StringMatchChecker : MonoBehaviour {
 	/// </summary>
 	public void checkStringForMatch(string s) {
 		if(stringToMatch.Equals(s)) {
-			EventSystem.onClearKeyboard();
 			EventSystem.onNextString();
+			EventSystem.onClearKeyboard();
 			onStringMatch.Invoke();
 			resetProgress();
-			--currentStringElement;
 		}
 	}
 
@@ -69,7 +63,6 @@ public class StringMatchChecker : MonoBehaviour {
 
 				if(isAnyLetterIncorrect == false) {
 					lastCorrectElement = currentStringElement;
-					checkStringForMatch(InputTextFieldString);
 					EventSystem.onChangeColorCorrect();
 				}
 
@@ -104,10 +97,9 @@ public class StringMatchChecker : MonoBehaviour {
 	/// <summary>
 	/// Unsubscribes the methods in this script from the EventSystem
 	/// </summary>
-	private void Unsubscribe()
-	{
+	private void Unsubscribe() {
 		EventSystem.onButtonPressed -= checkCharacterForMatch;
-		EventSystem.onValidateSentence -= setInputTextFieldString;
+		EventSystem.onValidateSentence -= checkStringForMatch;
 		EventSystem.onSwtichInputMethod -= resetProgress;
 		EventSystem.onUpdateStringToMatch -= updateStringToMatch;
 		EventSystem.onBackspace -= backspace;

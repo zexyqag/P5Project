@@ -53,6 +53,7 @@ public class KeyBoard : MonoBehaviour
 	{
 		textField.text = textField.text.Substring(0, textField.text.Length - 1);    // Substring is used to devide the string in the textfield from the start til the end minus 1
 		textField.text += letterToAdd;                                              // Adds the newly typed letter to the text field string
+		EventSystem.onValidateCharacter(letterToAdd);
 		EventSystem.onValidateSentence(textField.text);                             // Invokes the event to validate the sentence
 		textField.text += "|";
 	}

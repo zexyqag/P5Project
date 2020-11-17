@@ -58,7 +58,7 @@ public class DataSaver : MonoBehaviour {
 		if(writer == null) {
 			dataFile = new FileInfo(Path.Combine(dataDirectory.FullName, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString() + ".csv"));
 			writer = File.CreateText(dataFile.FullName);
-			writer.WriteLine("ImputMethod;Time;Keypressed;Correct;Incorrect");
+			writer.WriteLine("InputMethod;Time;Keypressed;Correct;Incorrect");
 		}
 	}
 
