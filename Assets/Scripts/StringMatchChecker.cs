@@ -82,7 +82,7 @@ public class StringMatchChecker : MonoBehaviour {
 		if(currentStringElement > 0) {
 			--currentStringElement;
 
-			if(lastCorrectElement > currentStringElement) {
+			if(lastCorrectElement >= currentStringElement) {
 				lastCorrectElement = currentStringElement - 1;
 			}
 
